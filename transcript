@@ -1,0 +1,4244 @@
+# Compile of File_Handler.sv was successful with warnings.
+# Compile of address_parse.sv was successful with warnings.
+# Compile of parameters.sv was successful.
+# 3 compiles, 0 failed with no errors.
+edit address_parse.sv
+# Compile of File_Handler.sv was successful.
+# Compile of address_parse.sv was successful.
+# Compile of parameters.sv was successful.
+# 3 compiles, 0 failed with no errors.
+vsim +lint +FILENAME=testfile.txt File_Handler.sv.bak
+# OpenFile File_Handler.sv.bak
+vsim +lint +FILENAME=testfile.txt File_Handler
+# vsim "+lint" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:12:18 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv(3).
+# ** Warning: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv(3).
+# ** Warning: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv(30): (vopt-2697) MSB 63 of part-select into 'address' is out of bounds.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read address: 0x10019d94 
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read address: 0x00408ed8 
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x10019d88 
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read address: 0x00408edc 
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x10013220 
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read address: 0x00408ee0 
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x00408ee4 
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x100230b8 
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read address: 0xa408ed4a 
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 000000110101
+# TAG: 101001000000100
+# Read address: 0x00408ee8 
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x10013220 
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read address: 0x00408eec 
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x00408ef0 
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x00408ef4 
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x10013220 
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read address: 0x00408ef8 
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x100230bc 
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read address: 0x00408efc 
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read address: 0x100230c0 
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 000000000011
+# TAG: 000100000000001
+# Read address: 0xf408ed4f 
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:14:53 on Jan 30,2023, Elapsed time: 0:02:35
+# Errors: 0, Warnings: 6
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:14:53 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0000100000000000
+# index: 00000110110
+# byteselect: 010100
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0000100000000000
+# index: 00000110110
+# byteselect: 001000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 000000110101
+# TAG: 101001000000100
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0101001000000100
+# index: 00000110101
+# byteselect: 001010
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110000
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111100
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 000000000011
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0000100000000001
+# index: 00000000011
+# byteselect: 000000
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:16:01 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# ** Warning: File_Handler.sv(1): (vlog-13233) Design unit "File_Handler_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Warning: address_parse.sv(1): (vlog-13233) Design unit "address_parse_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:16:01 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:16:13 on Jan 30,2023, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:16:13 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Warning: address_parse.sv(30): (vopt-2697) MSB 63 of part-select into 'address' is out of bounds.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:17:54 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:17:54 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:17:59 on Jan 30,2023, Elapsed time: 0:01:46
+# Errors: 0, Warnings: 4
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:17:59 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Warning: address_parse.sv(30): (vopt-2697) MSB 63 of part-select into 'address' is out of bounds.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:18:51 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:18:51 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:18:54 on Jan 30,2023, Elapsed time: 0:00:55
+# Errors: 0, Warnings: 4
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:18:54 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0000100000000000
+# index: 00000110110
+# byteselect: 010100
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 000000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0000100000000000
+# index: 00000110110
+# byteselect: 001000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 000000110101
+# TAG: 101001000000100
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0101001000000100
+# index: 00000110101
+# byteselect: 001010
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110000
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 000000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0000100000000000
+# index: 00000001000
+# byteselect: 100000
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111100
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 000000000011
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0000100000000001
+# index: 00000000011
+# byteselect: 000000
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:21:19 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:21:19 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+run -all
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:21:24 on Jan 30,2023, Elapsed time: 0:02:30
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:21:24 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:22:04 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:22:04 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:22:07 on Jan 30,2023, Elapsed time: 0:00:43
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:22:07 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 000000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0000100000000001
+# index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 000000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0000000000100000
+# index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:24:57 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Error: (vlog-13069) address_parse.sv(38): near "end": syntax error, unexpected end.
+# ** Error (suppressible): parameters.sv(47): (vlog-2244) Variable 'read' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(48): (vlog-2244) Variable 'write' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(49): (vlog-2244) Variable 'cacheMiss' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(50): (vlog-2244) Variable 'CacheHIT' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: parameters.sv(69): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+# End time: 21:24:57 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:25:20 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Error: (vlog-13069) address_parse.sv(38): near "end": syntax error, unexpected end.
+# ** Error (suppressible): parameters.sv(47): (vlog-2244) Variable 'read' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(48): (vlog-2244) Variable 'write' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(49): (vlog-2244) Variable 'cacheMiss' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(50): (vlog-2244) Variable 'CacheHIT' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: parameters.sv(69): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+# End time: 21:25:20 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+edit parameters.sv
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:26:44 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:26:44 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:27:21 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Error: (vlog-13069) address_parse.sv(39): near "end": syntax error, unexpected end.
+# ** Error (suppressible): parameters.sv(47): (vlog-2244) Variable 'read' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(48): (vlog-2244) Variable 'write' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(49): (vlog-2244) Variable 'cacheMiss' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(50): (vlog-2244) Variable 'CacheHIT' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: parameters.sv(69): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+# End time: 21:27:22 on Jan 30,2023, Elapsed time: 0:00:01
+# Errors: 6, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:27:54 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Error: (vlog-13069) address_parse.sv(39): near "end": syntax error, unexpected end.
+# ** Error (suppressible): parameters.sv(47): (vlog-2244) Variable 'read' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(48): (vlog-2244) Variable 'write' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(49): (vlog-2244) Variable 'cacheMiss' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(50): (vlog-2244) Variable 'CacheHIT' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: parameters.sv(69): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+# End time: 21:27:54 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:27:56 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# ** Error: (vlog-13069) address_parse.sv(39): near "end": syntax error, unexpected end.
+# ** Error (suppressible): parameters.sv(47): (vlog-2244) Variable 'read' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(48): (vlog-2244) Variable 'write' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(49): (vlog-2244) Variable 'cacheMiss' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): parameters.sv(50): (vlog-2244) Variable 'CacheHIT' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: parameters.sv(69): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+# End time: 21:27:56 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:28:03 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:28:03 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:28:35 on Jan 30,2023, Elapsed time: 0:06:28
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:28:35 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(18): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:31:39 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# ** Error: (vlog-13069) File_Handler.sv(18): near "inst": syntax error, unexpected IDENTIFIER, expecting ';'.
+# End time: 21:31:40 on Jan 30,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:32:01 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# ** Error: (vlog-13069) File_Handler.sv(18): near "inst": syntax error, unexpected IDENTIFIER, expecting ';'.
+# End time: 21:32:01 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:32:49 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# ** Error: (vlog-13069) File_Handler.sv(18): near "inst": syntax error, unexpected IDENTIFIER, expecting ';'.
+# End time: 21:32:49 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/intelFPGA_lite/22.1std/questa_fse/win64/vlog failed.
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:33:10 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:33:10 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:33:36 on Jan 30,2023, Elapsed time: 0:05:01
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:33:36 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(17): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(17): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tag: 0xxxxxxxxxxxxxxx
+# index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:36:30 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:36:30 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:36:34 on Jan 30,2023, Elapsed time: 0:02:58
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:36:34 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(20): (vopt-2241) Connection width does not match width of port 'address'. The port definition is at: address_parse.sv(3).
+# ** Warning: File_Handler.sv(20): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 000000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:37:36 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:37:36 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:37:40 on Jan 30,2023, Elapsed time: 0:01:06
+# Errors: 0, Warnings: 3
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:37:40 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: File_Handler.sv(20): (vopt-2241) Connection width does not match width of port 'index'. The port definition is at: address_parse.sv(3).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:38:27 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:38:28 on Jan 30,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:38:31 on Jan 30,2023, Elapsed time: 0:00:51
+# Errors: 0, Warnings: 2
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:38:31 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+run -all
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:39:10 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:39:10 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+run -all
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:39:18 on Jan 30,2023, Elapsed time: 0:00:47
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:39:18 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+run -all
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:39:57 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:39:57 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:40:00 on Jan 30,2023, Elapsed time: 0:00:42
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:40:00 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:41:04 on Jan 30,2023, Elapsed time: 0:01:04
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:41:04 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:46:25 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:46:25 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:46:28 on Jan 30,2023, Elapsed time: 0:05:24
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:46:28 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:46:57 on Jan 30,2023, Elapsed time: 0:00:29
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:46:57 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:56:51 on Jan 30,2023, Elapsed time: 0:09:54
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:56:51 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:57:41 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:57:41 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:57:44 on Jan 30,2023, Elapsed time: 0:00:53
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:57:44 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:58:43 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:58:43 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:58:46 on Jan 30,2023, Elapsed time: 0:01:02
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:58:46 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 21:59:19 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 21:59:19 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 21:59:26 on Jan 30,2023, Elapsed time: 0:00:40
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 21:59:26 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 22:00:07 on Jan 30,2023, Elapsed time: 0:00:41
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 22:00:07 on Jan 30,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          10 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:01:57 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 22:01:57 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 22:02:00 on Jan 30,2023, Elapsed time: 0:01:53
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 22:02:01 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 010100
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 001000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 00000110101
+# TAG: 101001000000100
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0101001000000100
+# Index: 00000110101
+# byteselect: 001010
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110000
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111100
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 00000000011
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000100000000001
+# Index: 00000000011
+# byteselect: 000000
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:02:45 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 22:02:45 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 22:02:50 on Jan 30,2023, Elapsed time: 0:00:49
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 22:02:50 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 010100
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 001000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 00000110101
+# TAG: 101001000000100
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0101001000000100
+# Index: 00000110101
+# byteselect: 001010
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110000
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111100
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 00000000011
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000100000000001
+# Index: 00000000011
+# byteselect: 000000
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+vlog *.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:05:02 on Jan 30,2023
+# vlog -reportprogress 300 File_Handler.sv address_parse.sv parameters.sv 
+# -- Compiling package File_Handler_sv_unit
+# -- Importing package mypkg
+# -- Compiling module File_Handler
+# -- Compiling package address_parse_sv_unit
+# -- Compiling module address_parse
+# -- Compiling package mypkg
+# 
+# Top level modules:
+# 	File_Handler
+# End time: 22:05:02 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim +lint +debug +FILENAME=testfile.txt File_Handler
+# End time: 22:05:05 on Jan 30,2023, Elapsed time: 0:02:15
+# Errors: 0, Warnings: 1
+# vsim "+lint" "+debug" "+FILENAME=testfile.txt" File_Handler 
+# Start time: 22:05:05 on Jan 30,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.mypkg(fast)
+# Loading work.address_parse_sv_unit(fast)
+# Loading work.File_Handler_sv_unit(fast)
+# Loading work.File_Handler(fast)
+run -all
+# Received file name
+# normal mode
+# Read command number:           0
+# Read address: 0x10019d94 
+# Read address: 0x10019d94 
+# tagg: 0xxxxxxxxxxxxxxx
+# Index: xxxxxxxxxxx
+# byteselect: xxxxxx
+# Cnt:           1 
+#  -------From add_parse----------
+# Address 10019d94
+# BYTE_SELKECT: 010100
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ed8 
+# Read address: 0x00408ed8 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 010100
+# Cnt:           2 
+#  -------From add_parse----------
+# Address 00408ed8
+# BYTE_SELKECT: 011000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10019d88 
+# Read address: 0x10019d88 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011000
+# Cnt:           3 
+#  -------From add_parse----------
+# Address 10019d88
+# BYTE_SELKECT: 001000
+# INDEX: 00000110110
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408edc 
+# Read address: 0x00408edc 
+# tagg: 0000100000000000
+# Index: 00000110110
+# byteselect: 001000
+# Cnt:           4 
+#  -------From add_parse----------
+# Address 00408edc
+# BYTE_SELKECT: 011100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 011100
+# Cnt:           5 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ee0 
+# Read address: 0x00408ee0 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:           6 
+#  -------From add_parse----------
+# Address 00408ee0
+# BYTE_SELKECT: 100000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ee4 
+# Read address: 0x00408ee4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100000
+# Cnt:           7 
+#  -------From add_parse----------
+# Address 00408ee4
+# BYTE_SELKECT: 100100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230b8 
+# Read address: 0x100230b8 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 100100
+# Cnt:           8 
+#  -------From add_parse----------
+# Address 100230b8
+# BYTE_SELKECT: 111000
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xa408ed4a 
+# Read address: 0xa408ed4a 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111000
+# Cnt:           9 
+#  -------From add_parse----------
+# Address a408ed4a
+# BYTE_SELKECT: 001010
+# INDEX: 00000110101
+# TAG: 101001000000100
+# Read command number:           2
+# Read address: 0x00408ee8 
+# Read address: 0x00408ee8 
+# tagg: 0101001000000100
+# Index: 00000110101
+# byteselect: 001010
+# Cnt:          10 
+#  -------From add_parse----------
+# Address 00408ee8
+# BYTE_SELKECT: 101000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           0
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101000
+# Cnt:          11 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408eec 
+# Read address: 0x00408eec 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          12 
+#  -------From add_parse----------
+# Address 00408eec
+# BYTE_SELKECT: 101100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef0 
+# Read address: 0x00408ef0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 101100
+# Cnt:          13 
+#  -------From add_parse----------
+# Address 00408ef0
+# BYTE_SELKECT: 110000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           2
+# Read address: 0x00408ef4 
+# Read address: 0x00408ef4 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110000
+# Cnt:          14 
+#  -------From add_parse----------
+# Address 00408ef4
+# BYTE_SELKECT: 110100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x10013220 
+# Read address: 0x10013220 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 110100
+# Cnt:          15 
+#  -------From add_parse----------
+# Address 10013220
+# BYTE_SELKECT: 100000
+# INDEX: 00000001000
+# TAG: 000100000000000
+# Read command number:           2
+# Read address: 0x00408ef8 
+# Read address: 0x00408ef8 
+# tagg: 0000100000000000
+# Index: 00000001000
+# byteselect: 100000
+# Cnt:          16 
+#  -------From add_parse----------
+# Address 00408ef8
+# BYTE_SELKECT: 111000
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230bc 
+# Read address: 0x100230bc 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111000
+# Cnt:          17 
+#  -------From add_parse----------
+# Address 100230bc
+# BYTE_SELKECT: 111100
+# INDEX: 00000000010
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0x00408efc 
+# Read address: 0x00408efc 
+# tagg: 0000100000000001
+# Index: 00000000010
+# byteselect: 111100
+# Cnt:          18 
+#  -------From add_parse----------
+# Address 00408efc
+# BYTE_SELKECT: 111100
+# INDEX: 00000111011
+# TAG: 000000000100000
+# Read command number:           1
+# Read address: 0x100230c0 
+# Read address: 0x100230c0 
+# tagg: 0000000000100000
+# Index: 00000111011
+# byteselect: 111100
+# Cnt:          19 
+#  -------From add_parse----------
+# Address 100230c0
+# BYTE_SELKECT: 000000
+# INDEX: 00000000011
+# TAG: 000100000000001
+# Read command number:           2
+# Read address: 0xf408ed4f 
+# Read address: 0xf408ed4f 
+# tagg: 0000100000000001
+# Index: 00000000011
+# byteselect: 000000
+# Cnt:          20 
+#  -------From add_parse----------
+# Address f408ed4f
+# BYTE_SELKECT: 001111
+# INDEX: 00000110101
+# TAG: 111101000000100
+quit -sim
+# End time: 22:05:40 on Jan 30,2023, Elapsed time: 0:00:35
+# Errors: 0, Warnings: 1
