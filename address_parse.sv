@@ -23,7 +23,7 @@ int cnt = 0;
 
 always @(*)
 begin
-#0
+#1
 	cnt = cnt +1;
 	byte_select = address[OFFSET_BITS - 1 : 0];
 	index = address[INDEX_BITS: d_size];

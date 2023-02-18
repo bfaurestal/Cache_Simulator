@@ -1,7 +1,6 @@
 import mypkg::*;
 
-module File_Handler;
-
+module File_Handler( eof);
 
 integer data_file;
 integer valid_data;
@@ -10,6 +9,7 @@ string retrieved_file;
 integer debug;
 integer silent;
 integer normal;
+output reg eof;
 reg flag = 0;
 reg[32-1:0] read_address;
 reg [OFFSET_BITS - 1 : 0]offset_bits;
@@ -27,11 +27,12 @@ begin
 //look for file name
 if($test$plusargs ("debug"))
 	debug = 1;
-if($value$plusargs ("FILENAME=%s", retrieved_file))
+if($value$plusargs ("f=%s", retrieved_file))
     $display("Received file name");
 else
 	begin
-	$display("No file name received");
+	$write("No file name received");
+	$display(" Run: vsim +f=\"filename\" ");
 	$finish;
 	end
 //open file
@@ -74,6 +75,7 @@ while(!$feof(data_file))
 //#1
 	if(valid_data != 0)
 		begin
+		eof = 0;
 		if(normal == 1)
 			begin
 			$display("Read address: 0x%8h ", read_address);
@@ -88,21 +90,23 @@ while(!$feof(data_file))
 			$display("byteselect: %b",offset_bits);
 			//$display ("------------cacheStruct---------------");
 			//store_cache(tagg,Index,offset_bits);
-
+			$display("EOF %d",eof);
 		//send data into modules
 			end
+			
 		end
+		
 	else
 		begin
 		$display("No address read.");
 		$finish;
 		end
 		
-
-
 	end
+	eof = 1;
 	//#10
 $fclose(data_file);
+$display("EOF %d",eof);
 end
 	
 endmodule
