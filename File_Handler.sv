@@ -1,6 +1,7 @@
 import mypkg::*;
 
-module File_Handler( eof);
+module File_Handler;
+
 
 integer data_file;
 integer valid_data;
@@ -9,19 +10,29 @@ string retrieved_file;
 integer debug;
 integer silent;
 integer normal;
-output reg eof;
 reg flag = 0;
 reg[32-1:0] read_address;
 reg [OFFSET_BITS - 1 : 0]offset_bits;
 reg [INDEX_BITS - 1 : 0]Index;
 reg [TAG_BITS - 1: 0]tagg;
+
+reg read;
+reg write;
+reg miss; 
+reg hit;
 //reg [a_size + (protocol + i_size - c_size + a_size - d_size) * a_size - 2: 0] tag_array[2 ** (c_size - a_size)];
 
 address_parse inst (.address(read_address), 
 					.tag(tagg),
 					.index( Index),
 					.byte_select(offset_bits));
-
+					
+cache ch (.read_address(read_address), 
+				.cmd(data_command), 
+				.cache_read(read),
+				.cache_write(write),
+				.cache_hit(hit),
+				.cache_miss(miss));
 initial
 begin
 //look for file name
@@ -31,8 +42,7 @@ if($value$plusargs ("f=%s", retrieved_file))
     $display("Received file name");
 else
 	begin
-	$write("No file name received");
-	$display(" Run: vsim +f=\"filename\" ");
+	$display("No file name received");
 	$finish;
 	end
 //open file
@@ -58,7 +68,7 @@ else
 while(!$feof(data_file))
 	begin
 	valid_data = $fscanf(data_file, "%d", data_command);
-#5
+#10
 	if(valid_data != 0)
 		begin
 		if(debug == 1)
@@ -72,10 +82,14 @@ while(!$feof(data_file))
 		end
 
 	valid_data = $fscanf(data_file, "%h", read_address);
-//#1
+	
+end
+end
+
+/* always @(data_command, read_address)
+begin
 	if(valid_data != 0)
 		begin
-		eof = 0;
 		if(normal == 1)
 			begin
 			$display("Read address: 0x%8h ", read_address);
@@ -90,23 +104,18 @@ while(!$feof(data_file))
 			$display("byteselect: %b",offset_bits);
 			//$display ("------------cacheStruct---------------");
 			//store_cache(tagg,Index,offset_bits);
-			$display("EOF %d",eof);
+
 		//send data into modules
 			end
-			
 		end
-		
 	else
 		begin
 		$display("No address read.");
 		$finish;
 		end
 		
-	end
-	eof = 1;
 	//#10
 $fclose(data_file);
-$display("EOF %d",eof);
-end
+end */
 	
 endmodule

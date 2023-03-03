@@ -44,8 +44,8 @@ string translator;
 	 reg [WAY-2 : 0]PLRU; //subtract 2 because - 1 for array to 0 and -1 for the equation for PLRU bits
     
   } cache_data;
-int read = 0;
-int write = 0;
+/* int read = 0;
+int write = 0; */
 int cacheMiss=0;
 int CacheHIT=0;
 
@@ -61,9 +61,5 @@ enum{M=3,E=1,S=2,I=0}MESI_states;
 enum{BREAD=1,BWRITE=2,BINVAL=3,BRWIM=4} bus_operations;
 
 enum{GETLINE=1,SENDLINE=2,INVALLINE=3,EVICTLINE=4} L2_L1_messages;
-
-
-
-
 
 endpackage

@@ -21,19 +21,21 @@ int cnt = 0;
 //assign index = address[(c_size - $clog2(a_size) - d_size ) + d_size - 1 : d_size];
 //assign tag = address[i_size - 1 : (c_size - $clog2(a_size)) + d_size];
 
-always @(*)
+/* always @(*)
 begin
-#1
+#0
 	cnt = cnt +1;
 	byte_select = address[OFFSET_BITS - 1 : 0];
 	index = address[INDEX_BITS: d_size];
 	tag = address[i_size - 1 : INDEX_BITS + OFFSET_BITS]; 
+
 	$display("Cnt: %d ", cnt);
 	$display(" -------From add_parse----------");
 	$display("Address %x",address);
 	$display("BYTE_SELKECT: %b", byte_select);
 	$display ("INDEX: %b", index);
 	$display ("TAG: %b", tag);
-end
+
+end */
 
 endmodule
