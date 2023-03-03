@@ -36,16 +36,53 @@ begin
 	
 	
 	case(cmd)
+	
 		 READ:
 		 begin
 		 cache_read=cache_read+1;
 		 $display("cache_read: %d", cache_read);
+		 if(tag[index] == tag) 
+			 begin
+			 $display("HIT");
+			 end
+		 
 		 end
+		 
 		 WRITE:
 		 begin
 		 cache_write++;
 		 $display("cache_write: %d", cache_write);
 		 end
+		 
+		 I_FETCH:
+		 begin
+		 $display("Inst fetch");
+		 end
+		 
+		 L2_INVAL:
+		 begin
+		 $display("L2_INVAL");
+		 
+		 end
+		 
+		 L2_DATA_RQ:
+		 begin
+		 $display("L2_DATA_RQ");
+		 end
+		 
+		 CLR:
+		 begin
+		 $display("CLR");
+		 
+		 end
+		 
+		 PRINT:
+		 begin
+		 $display("PRINT");
+		 end
+		 
+		 default: $display("Invalid Command");
+		 
 	endcase
 	$display(" -------From cahce----------");
 	$display("CMD: %d", cmd);
