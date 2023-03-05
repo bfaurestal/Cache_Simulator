@@ -9,12 +9,21 @@ module cache(read_address,
 
 input		   [32-1:0] read_address;
 input reg  [2: 0]cmd;
-output int cache_write;
+output real cache_write;
 output int cache_read;
-output int cache_hit;
+output real cache_hit;
 output int cache_miss;
 int count = 0;
+int num = 0;
 reg [1:0]eof;
+
+/* logic [STATE_BITS-1:0] STATE[SETS-1:0][WAYS-1:0];
+logic [LRU_BITS-1:0] LRU[SETS-1:0][WAYS-1:0];	
+logic [TAG_BITS-1:0] TAG[SETS-1:0][WAYS-1:0]; */
+//logic [MESI_BITS-1:0] iCache[LINE][I_WAY-1:0];
+bit [14:0] iCache[16][2];
+bit [14:0] dCache[16][2];
+
 
 //`include "File_Handler.sv"
 // File_Handler file (eof);
@@ -35,6 +44,7 @@ begin
 	//$display("Cnt: %d ", cnt);
 	
 	
+<<<<<<< Updated upstream
 	case(cmd)
 	
 		 READ:
@@ -85,14 +95,102 @@ begin
 		 
 	endcase
 	$display(" -------From cahce----------");
+=======
+case(cmd)
+
+	READ: begin
+		cache_read=cache_read+1;
+		if(dCache[index][0]==tag) begin
+			cache_hit++;
+			$write("HIT #%d----",num);
+			$write("HIT for tag %b----",tag);
+			$display("at index %b",index);
+			num++;
+		end
+		else begin
+			dCache[index][0]=tag;
+		end
+
+	end
+
+	WRITE:begin
+		dCache[index][0]=tag;
+		cache_write++;
+		$display("cache_write: %d", cache_write);
+	end
+
+	I_FETCH: begin
+		$display("Inst fetch for address: %h",read_address);
+		assign tag = read_address[ADDRESS_BITS - 1 : I_INDEX_BITS + OFFSET_BITS];//range for tag
+		assign index = read_address[(OFFSET_BITS + I_INDEX_BITS) - 1:OFFSET_BITS]; //range for index
+		assign byte_select = read_address[OFFSET_BITS - 1 : 0];//range for byte_select
+		
+		
+		if(iCache[index][0]==tag) begin
+			$write("HIT #%d----",num);
+			$write("HIT for tag %b----",tag);
+			$display("at index %b",index);
+			num++;
+			cache_hit++;
+		end
+		else begin
+			iCache[index][0]=tag;
+		end
+		if (debug == 1) begin
+		$write("I_TAG_BITS:%d |",I_TAG_BITS);
+		$write("I_INDEX_BITS:%d |",I_INDEX_BITS);
+		$display("OFFSET_BITS:%d",OFFSET_BITS);
+		$write("I_tag : %b", tag);
+		$write("I_index : %d", index);
+		$display("I_byselect : %b", byte_select);
+		end
+		
+		
+		// logic [
+	end
+
+	L2_INVAL: begin
+		$display("L2_INVAL");
+
+	end
+
+	L2_DATA_RQ: begin
+		$display("L2_DATA_RQ");
+	end
+
+	CLR: begin
+		$display("CLR");
+	end
+
+	PRINT: begin
+		$display("PRINT");
+	end
+
+	default: $display("Invalid Command");
+
+endcase
+/* 	$display(" -------From cahce----------");
+>>>>>>> Stashed changes
 	$display("CMD: %d", cmd);
 	$display("Address %x",read_address);
-	
+	 */
 	//$display("cache_read: %d", cache_read);
 end
 
 
-
+initial
+begin
+#100
+	for(int i =0; i<10; i++) begin
+		$display("array at position [%d]:at tag: %b",i,iCache[i][0]);
+	end
+	$display("iCache = %p", iCache);
+	for(int i =0; i<10; i++)begin
+		$display("---------DCACHE------------");
+		$display("array at position [%d]:at tag: %b",i,dCache[i][0]);
+	end
+	$display("dCache = %p", dCache);
+end
 
 
 
