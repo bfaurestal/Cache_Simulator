@@ -19,60 +19,60 @@ begin
 		state <= 2'b00;
 	else
 	begin
-		if (r_w == 1'b0)
+		if (r_w == 1'b0) // In case of a read
 			case (state)
 				2'b00:
 				begin
-					if (inbits == 2'b01) 
+					if (inbits == 2'b01) //standard read 
 						state <= 2'b01;
-					else if (inbits == 2'b00)
+					else if (inbits == 2'b00) //first read
 						state <= 2'b10;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 				2'b01:
 				begin
-					if (inbits == 2'b01)
+					if (inbits == 2'b01) //standard read
 						state <= 2'b01;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 				2'b10:
 				begin
-					if (inbits == 2'b10)
+					if (inbits == 2'b10) //same processor read
 						state <= 2'b01;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 				2'b11:
 				begin
-					if (inbits == 2'b01)
+					if (inbits == 2'b01) //standard read
 						state <= 2'b11;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 			endcase
-		else
+		else // In case of a write
 			case (state)
 				2'b00:
 				begin
-					if (inbits == 2'b11) 
+					if (inbits == 2'b11) //standard write
 						state <= 2'b10;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 				2'b01:
 				begin
-					if (inbits == 2'b11)
+					if (inbits == 2'b11) //standard write
 						state <= 2'b10;
-					else
+					else //invalid state
 						state <= 2'b00;
 				end
 				2'b10:
 				begin
 					if (inbits == 2'b11)
 						state <= 2'b11;
-					else
+					else invalid state
 						state <= 2'b00;
 				end
 				2'b11:
