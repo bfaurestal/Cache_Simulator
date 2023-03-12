@@ -5,7 +5,8 @@ module mesi_protocol_tb;
 reg [4:0] dummy_reg;
 reg clk_tb;
 reg reset_tb;
-reg [2:0] inbits_tb;
+reg [1:0] inbits_tb;
+reg r_w;
 wire detect;
 
 reg [1:0] state;
@@ -15,49 +16,43 @@ integer count = 0; // counter variable
 parameter MAX_TEST_CASES = 5; // maximum number of test cases
 
 initial begin
-	clk_tb = 0;
-	reset_tb = 0;
-	inbits_tb = 0;
-	state = 2'b00;
+    clk_tb = 0;
+    reset_tb = 0;
+    inbits_tb = 0;
+    state = 2'b00;
 end
 
 initial begin
-	reset_tb = 1'b1;
-	#15 reset_tb = 1'b0;
+    reset_tb = 1'b1;
+    #15 reset_tb = 1'b0;
 end
 
 always begin
-	#10 clk_tb = !clk_tb;
+    #10 clk_tb = !clk_tb;
 end
 
 always begin
-	if (count < MAX_TEST_CASES) begin
-		#10 inbits_tb = 3'b001;
-		#10 inbits_tb = 3'b000;
-		#10 inbits_tb = 3'b100;
-		#10 inbits_tb = 3'b010;
-		#10 inbits_tb = 3'b101;
-		#10 inbits_tb = 3'b011;
-		#10 inbits_tb = 3'b001;
-		#10 inbits_tb = 3'b111;
-		#10 inbits_tb = 3'b010;
-		#10 inbits_tb = 3'b101;
-		#10 inbits_tb = 3'b000;
-		#10 inbits_tb = 3'b011;
-		#10 inbits_tb = 3'b111;
-		#10 inbits_tb = 3'b101;
-		#10 inbits_tb = 3'b010;
-		#10 inbits_tb = 3'b110;
-		#10 inbits_tb = 3'b011;
-		#10 inbits_tb = 3'b101;
-		#10 inbits_tb = 3'b111;
-
-		count = count + 1; // increment counter after each test case
-		if (count == MAX_TEST_CASES) begin
-			$finish; // end simulation
-		end
-	end
+    #1;
+    if (count < MAX_TEST_CASES) begin
+        r_w = count % 2; // alternate between read and write
+        if (r_w) begin
+            // write operation
+            inbits_tb = 2'b01;
+            $display("Operation: Write");
+        end
+        else begin
+            // read operation
+            inbits_tb = 2'b11;
+            $display("Operation: Read");
+        end
+        
+        count = count + 1; // increment counter after each test case
+        if (count == MAX_TEST_CASES) begin
+            $finish; // end simulation
+        end
+    end
 end
+
 always @(posedge clk_tb) begin
     if (reset_tb) begin
         state <= 2'b00;
@@ -111,6 +106,6 @@ always @(posedge clk_tb) begin
     end
 end
 
-mesi_protocol mesi_protocol_inst(.clk(clk_tb), .inbits(inbits_tb), .detect(detect), .reset(reset_tb));
+mesi_protocol mesi_protocol_inst(.clk(clk_tb), .inbits(inbits_tb), .detect(detect), .reset(reset_tb), .r_w(r_w));
 
 endmodule
