@@ -1,9 +1,9 @@
-module mesi_protocol(clk, reset, inbits, r_w, detect);
+module mesi_protocol(clk, reset, first_read, r_w_s_i, detect);
 
 input clk;
 input reset;
-input r_w;
-input [1:0] inbits;
+input [1:0] r_w_s_i;
+input first_read;
 output reg detect;
 
 reg [1:0] state;
@@ -19,68 +19,87 @@ begin
 		state <= 2'b00;
 	else
 	begin
-		if (r_w == 1'b0) // In case of a read
+		if (r_w_s_i == 2'b00) // In case of a write
 			case (state)
 				2'b00:
 				begin
-					if (inbits == 2'b01) //standard read 
-						state <= 2'b01;
-					else if (inbits == 2'b00) //first read
-						state <= 2'b10;
-					else //invalid state
-						state <= 2'b00;
+					state <= 2'b10;
 				end
 				2'b01:
 				begin
-					if (inbits == 2'b01) //standard read
-						state <= 2'b01;
-					else //invalid state
-						state <= 2'b00;
+					state <= 2'b10;
 				end
 				2'b10:
 				begin
-					if (inbits == 2'b10) //same processor read
-						state <= 2'b01;
-					else //invalid state
-						state <= 2'b00;
+					state <= 2'b11;
 				end
 				2'b11:
 				begin
-					if (inbits == 2'b01) //standard read
-						state <= 2'b11;
-					else //invalid state
-						state <= 2'b00;
+					state <= 2'b11;
 				end
 			endcase
-		else // In case of a write
+		else if (r_w_s_i == 2'b01)// In case of a read
 			case (state)
 				2'b00:
 				begin
-					if (inbits == 2'b11) //standard write
+					if (first_read == 1'b1)
 						state <= 2'b10;
-					else //invalid state
-						state <= 2'b00;
+					else
+						state <= 2'b01;
 				end
 				2'b01:
 				begin
-					if (inbits == 2'b11) //standard write
-						state <= 2'b10;
-					else //invalid state
-						state <= 2'b00;
+					state <= 2'b01;
 				end
 				2'b10:
 				begin
-					if (inbits == 2'b11)
-						state <= 2'b11;
-					else invalid state
-						state <= 2'b00;
+					state <= 2'b01;
+				end
+				2'b11:
+				begin
+					state <= 2'b11;	
+				end
+			endcase		
+		else if (r_w_s_i == 2'b10)// In case of a snoop
+			case (state)
+				2'b00:
+				begin
+					state <= 2'b00;
+				end
+				2'b01:
+				begin
+					state <= 2'b00;
+				end
+				2'b10:
+				begin
+					state <= 2'b00;
 				end
 				2'b11:
 				begin
 					state <= 2'b00;	
 				end
-			endcase
+			endcase			
+		else //invalid
+			case (state)
+				2'b00:
+				begin
+					state <= 2'b00;
+				end
+				2'b01:
+				begin
+					state <= 2'b00;
+				end
+				2'b10:
+				begin
+					state <= 2'b00;
+				end
+				2'b11:
+				begin
+					state <= 2'b00;	
+				end
+			endcase			
 		end
+
 end
 
 always @(posedge clk, posedge reset)
