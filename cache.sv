@@ -43,8 +43,6 @@ begin
 //#0
 	//$display("Cnt: %d ", cnt);
 	
-	
-<<<<<<< Updated upstream
 	case(cmd)
 	
 		 READ:
@@ -95,80 +93,7 @@ begin
 		 
 	endcase
 	$display(" -------From cahce----------");
-=======
-case(cmd)
 
-	READ: begin
-		cache_read=cache_read+1;
-		if(dCache[index][0]==tag) begin
-			cache_hit++;
-			$write("HIT #%d----",num);
-			$write("HIT for tag %b----",tag);
-			$display("at index %b",index);
-			num++;
-		end
-		else begin
-			dCache[index][0]=tag;
-		end
-
-	end
-
-	WRITE:begin
-		dCache[index][0]=tag;
-		cache_write++;
-		$display("cache_write: %d", cache_write);
-	end
-
-	I_FETCH: begin
-		$display("Inst fetch for address: %h",read_address);
-		assign tag = read_address[ADDRESS_BITS - 1 : I_INDEX_BITS + OFFSET_BITS];//range for tag
-		assign index = read_address[(OFFSET_BITS + I_INDEX_BITS) - 1:OFFSET_BITS]; //range for index
-		assign byte_select = read_address[OFFSET_BITS - 1 : 0];//range for byte_select
-		
-		
-		if(iCache[index][0]==tag) begin
-			$write("HIT #%d----",num);
-			$write("HIT for tag %b----",tag);
-			$display("at index %b",index);
-			num++;
-			cache_hit++;
-		end
-		else begin
-			iCache[index][0]=tag;
-		end
-		if (debug == 1) begin
-		$write("I_TAG_BITS:%d |",I_TAG_BITS);
-		$write("I_INDEX_BITS:%d |",I_INDEX_BITS);
-		$display("OFFSET_BITS:%d",OFFSET_BITS);
-		$write("I_tag : %b", tag);
-		$write("I_index : %d", index);
-		$display("I_byselect : %b", byte_select);
-		end
-		
-		
-		// logic [
-	end
-
-	L2_INVAL: begin
-		$display("L2_INVAL");
-
-	end
-
-	L2_DATA_RQ: begin
-		$display("L2_DATA_RQ");
-	end
-
-	CLR: begin
-		$display("CLR");
-	end
-
-	PRINT: begin
-		$display("PRINT");
-	end
-
-	default: $display("Invalid Command");
-
-endcase
 /* 	$display(" -------From cahce----------");
 >>>>>>> Stashed changes
 	$display("CMD: %d", cmd);
