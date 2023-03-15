@@ -64,7 +64,8 @@ typedef struct {
 
 bit [14:0] iCache[LINE][I_WAY];
 bit [14:0] dCache[LINE][WAY];
-bit [4:0]  LRU_tracker[4096][WAY];
+bit [1:0]  LRU_tracker_4[][I_WAY - 1:0];
+bit [2:0]  LRU_tracker_8[][WAY - 1:0];
 bit [2:0]  MESI_tracker[LINE][WAY];
 
 int read = 0;
