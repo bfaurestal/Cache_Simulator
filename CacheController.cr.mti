@@ -1,6 +1,13 @@
-C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv {2 {vlog -work work -vopt -sv -stats=none {C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv}
+C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/parameters.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/parameters.sv
 Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-** Warning: C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv(1): (vlog-13233) Design unit "address_parse_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+-- Compiling package mypkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv {2 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+** Warning: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/address_parse.sv(1): (vlog-13233) Design unit "address_parse_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
 -- Compiling package address_parse_sv_unit
 -- Importing package mypkg
 -- Compiling module address_parse
@@ -8,16 +15,9 @@ Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
 Top level modules:
 	address_parse
 
-} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/parameters.sv {1 {vlog -work work -vopt -sv -stats=none {C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\parameters.sv}
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv {2 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv
 Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
--- Compiling package mypkg
-
-Top level modules:
-	--none--
-
-} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv {2 {vlog -work work -vopt -sv -stats=none {C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv}
-Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-** Warning: C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv(1): (vlog-13233) Design unit "File_Handler_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+** Warning: C:/Users/bfaur/Desktop/Win23/ECE485R/ECE485_CacheController/File_Handler.sv(1): (vlog-13233) Design unit "File_Handler_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
 -- Compiling package File_Handler_sv_unit
 -- Importing package mypkg
 -- Compiling module File_Handler
@@ -25,14 +25,11 @@ Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
 Top level modules:
 	File_Handler
 
-} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv {2 {vlog -work work -vopt -sv -stats=none {C:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv}
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv {0 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv
 Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-** Warning: C:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv(1): (vlog-13233) Design unit "cache_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
--- Compiling package cache_sv_unit
--- Importing package mypkg
--- Compiling module cache
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv(47): near "<<<": syntax error, unexpected << or <<<.
+** Error (suppressible): C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv(63): (vlog-2720) A generate begin/end pair has been found outside of generate construct.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv(63): near "++": syntax error, unexpected ++.
+** Error: C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv(63): (vlog-13205) Syntax error found in the scope following 'cache_write'. Is there a missing '::'?
 
-Top level modules:
-	cache
-
-} {} {}}
+} {3.0 4.0 5.0 7.0} {}}

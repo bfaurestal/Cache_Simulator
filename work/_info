@@ -154,6 +154,7 @@ R5
 R6
 n@_opt1
 R7
+R1
 T_opt2
 !s110 1677204342
 VRC=Sm9XAnNU3B?MUZK?Y<3
@@ -168,28 +169,28 @@ R7
 R1
 vaddress_parse
 Z8 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z9 DXx4 work 5 mypkg 0 22 X><2o0lPMGeDH>RajD6D01
-DXx4 work 21 address_parse_sv_unit 0 22 06E;5oa4U:75a?l4G7ZiK1
-Z10 !s110 1677636236
+Z9 DXx4 work 5 mypkg 0 22 =G^UA_@j?<?5`2M?A6U@V1
+DXx4 work 21 address_parse_sv_unit 0 22 cj9W?1SHIN3DB0aE:190=2
+Z10 !s110 1678238362
 Z11 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
 !i10b 1
-!s100 @[L5fiRHYJ8<3kk0k6XG>2
-ITU1T4M4oF3:^=2WNP`_JL1
+!s100 6Jl33W<RCYzgo?2U95fD01
+I=GL^C4M5m3>LY]WcPdn@[3
 !s105 address_parse_sv_unit
 S1
 Z12 dC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator
-Z13 w1676005994
-Z14 8C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv
-Z15 FC:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv
-!i122 292
-L0 3 39
+Z13 w1678048794
+Z14 8C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv
+Z15 FC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv
+!i122 309
+L0 3 23
 Z16 OL;L;2021.2;73
 31
-Z17 !s108 1677636236.000000
-Z18 !s107 C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv|
-Z19 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\address_parse.sv|
+Z17 !s108 1678238362.000000
+Z18 !s107 C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv|
+Z19 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv|
 !i113 0
 Z20 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R6
@@ -197,19 +198,19 @@ Xaddress_parse_sv_unit
 R8
 R9
 R10
-V06E;5oa4U:75a?l4G7ZiK1
+Vcj9W?1SHIN3DB0aE:190=2
 r1
 !s85 0
 !i10b 1
-!s100 dz9Nf2Sc_c7B5m9Q4TKRD1
-I06E;5oa4U:75a?l4G7ZiK1
+!s100 ;nOXkGPoCQY4gL1QiJXk73
+Icj9W?1SHIN3DB0aE:190=2
 !i103 1
 S1
 R12
 R13
 R14
 R15
-!i122 292
+!i122 309
 Z21 L0 1 0
 R16
 31
@@ -221,23 +222,23 @@ R20
 R6
 vcache
 R8
-Z22 DXx4 work 5 mypkg 0 22 90cnTL9]@=j]cTA<=m3751
-DXx4 work 13 cache_sv_unit 0 22 eflA9@Cd:e4=_8^UKM7No1
+R9
+DXx4 work 13 cache_sv_unit 0 22 Z^CCofDl[mb<_`MbBP8:E0
 R10
 R11
 r1
 !s85 0
 !i10b 1
-!s100 d@Fg[ZI^:`F]J4Of4o@]J1
-IejUKFbUGemRIEm=[j2T>[1
+!s100 f;Q;1JH3>G[U_8=OEzKC?0
+IJ[DgzXRfe1ic1K2]7]`N]3
 !s105 cache_sv_unit
 S1
 R12
-Z23 w1677635615
-Z24 8C:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv
-Z25 FC:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv
-!i122 294
-L0 3 49
+Z22 w1678238348
+Z23 8C:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv
+Z24 FC:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv
+!i122 310
+Z25 L0 3 145
 R16
 31
 R17
@@ -248,21 +249,21 @@ R20
 R6
 Xcache_sv_unit
 R8
-R22
+R9
 R10
-VeflA9@Cd:e4=_8^UKM7No1
+VZ^CCofDl[mb<_`MbBP8:E0
 r1
 !s85 0
 !i10b 1
-!s100 aRa6ca42@FMz0AVk6eYfT1
-IeflA9@Cd:e4=_8^UKM7No1
+!s100 jEm<Uf:Q@__Ba5NGcdE5F1
+IZ^CCofDl[mb<_`MbBP8:E0
 !i103 1
 S1
 R12
+R22
 R23
 R24
-R25
-!i122 294
+!i122 310
 R21
 R16
 31
@@ -275,27 +276,27 @@ R6
 vFile_Handler
 R8
 R9
-DXx4 work 20 File_Handler_sv_unit 0 22 @R37ioa>iYLH:k7<ez`PK2
+DXx4 work 20 File_Handler_sv_unit 0 22 97]>O^O__W5XUz]<e<UFT3
 R10
 R11
 r1
 !s85 0
 !i10b 1
-!s100 R0JG;7[5NeDRIVF]4?dil3
-I_lSC`:Cb[Z5S9eYSmQ[7A0
+!s100 <L^JHGc3dC3K1BJ[mmTV`2
+IzP@3feJM@UYK@8P<g=bmm0
 !s105 File_Handler_sv_unit
 S1
 R12
-Z28 w1677204843
-Z29 8C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv
-Z30 FC:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv
-!i122 291
-L0 3 119
+R13
+Z28 8C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv
+Z29 FC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv
+!i122 311
+R25
 R16
 31
 R17
-Z31 !s107 C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv|
-Z32 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\File_Handler.sv|
+Z30 !s107 C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv|
+Z31 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv|
 !i113 0
 R20
 R6
@@ -304,50 +305,99 @@ XFile_Handler_sv_unit
 R8
 R9
 R10
-V@R37ioa>iYLH:k7<ez`PK2
+V97]>O^O__W5XUz]<e<UFT3
 r1
 !s85 0
 !i10b 1
-!s100 ?[KAmoYX`6[SKMb3]6c[P3
-I@R37ioa>iYLH:k7<ez`PK2
+!s100 1aIBWX]WJ7Zb9@RJ`k@BL1
+I97]>O^O__W5XUz]<e<UFT3
 !i103 1
 S1
 R12
+R13
 R28
 R29
-R30
-!i122 291
+!i122 311
 R21
 R16
 31
 R17
+R30
 R31
-R32
 !i113 0
 R20
 R6
 n@file_@handler_sv_unit
-Xmypkg
+vmesi_protocol
 R8
 R10
 !i10b 1
-!s100 >Q;[JOEX@K5CF_CRmBnWl1
-I90cnTL9]@=j]cTA<=m3751
+!s100 ezG9ZWS[^OHk<5RYMmB]I0
+IGFIH905`?AzL2`=o6GBHC3
 S1
 R12
-w1675134960
-8C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\parameters.sv
-FC:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\parameters.sv
-!i122 293
-L0 2 0
-V90cnTL9]@=j]cTA<=m3751
+w1678048774
+8C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv
+FC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv
+!i122 312
+L0 1 72
+R11
 R16
 r1
 !s85 0
 31
 R17
-!s107 C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\parameters.sv|
-!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:\Users\bfaur\Desktop\Win23\ECE485R\ECE485_CacheController\parameters.sv|
+!s107 C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv|
 !i113 0
 R20
 R6
+Xmypkg
+R8
+R10
+!i10b 1
+!s100 K]7fi[Ka:0]o?YfL?<O0I3
+I=G^UA_@j?<?5`2M?A6U@V1
+S1
+R12
+R13
+8C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv
+FC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv
+!i122 313
+L0 2 0
+V=G^UA_@j?<?5`2M?A6U@V1
+R16
+r1
+!s85 0
+31
+R17
+!s107 C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv|
+!i113 0
+R20
+R6
+vupdate_LRU
+R8
+R10
+!i10b 1
+!s100 69;8alhWZIccoj^lA]Gb:1
+I@m4eCG:YH>6^zo^=U<YD41
+S1
+R12
+w1678237212
+8C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv
+FC:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv
+!i122 314
+L0 1 85
+R11
+R16
+r1
+!s85 0
+31
+R17
+!s107 C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv|
+!i113 0
+R20
+R6
+nupdate_@l@r@u

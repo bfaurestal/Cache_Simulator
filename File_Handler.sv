@@ -6,9 +6,7 @@ integer data_file;
 integer valid_data;
 integer data_command;
 string retrieved_file;
-integer debug;
-integer silent;
-integer normal;
+
 reg flag = 0;
 reg[32-1:0] read_address;
 reg [OFFSET_BITS - 1 : 0]offset;
@@ -19,6 +17,9 @@ int read;
 integer write;
 integer miss; 
 integer hit;
+integer i_hit;
+integer i_miss;
+reg [1:0]eof;
 //reg [a_size + (protocol + i_size - c_size + a_size - d_size) * a_size - 2: 0] tag_array[2 ** (c_size - a_size)];
 
 address_parse inst (.address(read_address), 
@@ -35,8 +36,10 @@ cache ch (.read_address(read_address),
 initial
 begin
 //look for file name
-if($test$plusargs ("debug") || $test$plusargs ("d"))
+if($test$plusargs ("debug") || $test$plusargs ("d")) begin
 	debug = 1;
+	$display("-------------->Debug mode on<------------");
+end
 if($value$plusargs ("f=%s", retrieved_file))
     $display("Received file name");
 else
@@ -57,7 +60,7 @@ if($test$plusargs ("silent") || $test$plusargs ("s"))
 	$display("silent mode");
 	silent = 1;
 	end
-else
+else if(silent == 0 && debug ==0)
 	begin
 	$display("normal mode");
 	normal =1;
@@ -82,28 +85,30 @@ else
 			$display("No command read.");
 			$finish;
 			end
-
+		
 		valid_data = $fscanf(data_file, "%h", read_address);
-		if(debug == 1)
+		if((debug == 1 || normal == 1) && data_command != 9)
 			begin
-				$display("Read Adress %h ", read_address);
+				$display("Command:%d at address %h ", data_command,read_address);
 			end
 		if(debug==1)
 		begin
-			$display("----File_Handler.sv----");
+			$display("---->File_Handler.sv<----");
 			$write("TAG_BITS:%d |",TAG_BITS);
 			$write("INDEX_BITS:%d |",INDEX_BITS);
 			$display("OFFSET_BITS:%d",OFFSET_BITS);
-			$write("tag : %b |", tagg);
-			$write("index : %b |", Index);
+			$write("tag : %d |", tagg);
+			$write("index : %d |", Index);
 			$display("byselect : %b", offset);
 		end
 		
 	end
+	eof=1;
 	#10
-	print_statistics;
+	if(debug==1)
+		print_statistics;
 	//
-	//$stop;
+	//$finish;
 end
 
 task print_statistics;
@@ -112,36 +117,14 @@ task print_statistics;
 
 endtask
 
-/* always @(data_command, read_address)
-begin
-	if(valid_data != 0)
-		begin
-		if(normal == 1)
-			begin
-			$display("Read address: 0x%8h ", read_address);
-			end
-		if(debug == 1)
-			begin
-			$display("Read address: 0x%8h ", read_address);
-			//busOps(data_command,read_address);
-			
-			$display("tagg: %16b",tagg);
-			$display("Index: %b",Index);
-			$display("byteselect: %b",offset);
-			//$display ("------------cacheStruct---------------");
-			//store_cache(tagg,Index,offset);
-
-		//send data into modules
-			end
-		end
-	else
-		begin
-		$display("No address read.");
-		$finish;
-		end
-		
-	//#10
-$fclose(data_file);
+/* final begin
+	$display("*******Data Cache Statistics");
+	hit_ratio= hit/(hit+miss);
+	$display("STATSITICS:");
+	$display("CACHE READS|CACHE WRITES|CACHE HITS|CACHE MISSES|CACHE HIT RATIO");
+	$display("%d	|\t%d |\t%d	|\t%d	|%f\t",read,write,hit,miss,hit_ratio );
 end */
-	
+
+
+
 endmodule

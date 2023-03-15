@@ -1,0 +1,66 @@
+C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/File_Handler.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling package File_Handler_sv_unit
+-- Importing package mypkg
+-- Compiling module File_Handler
+
+Top level modules:
+	File_Handler
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module update_LRU
+
+Top level modules:
+	update_LRU
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU1.sv {0 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU1.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module update_LRU
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/update_LRU1.sv(28): near ".": syntax error, unexpected '.'.
+
+} {4.0 5.0} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv {0 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(17): near "bit": syntax error, unexpected "SystemVerilog keyword 'bit'", expecting IDENTIFIER or TYPE_IDENTIFIER or NETTYPE_IDENTIFIER or '='.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(40): near "]": syntax error, unexpected ']', expecting '\''.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(42): near "]": syntax error, unexpected ']', expecting '\''.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(49): near "bit": syntax error, unexpected "SystemVerilog keyword 'bit'", expecting "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(50): near "]": syntax error, unexpected ']', expecting '\''.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(81): near "]": syntax error, unexpected ']', expecting '\''.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(83): near "]": syntax error, unexpected ']', expecting '\''.
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(90): near "bit": syntax error, unexpected "SystemVerilog keyword 'bit'", expecting "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/eviction_LRU.sv(91): near "]": syntax error, unexpected ']', expecting '\''.
+
+} {3.0 12.0} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/mesi_protocol.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module mesi_protocol
+
+Top level modules:
+	mesi_protocol
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/address_parse.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling package address_parse_sv_unit
+-- Importing package mypkg
+-- Compiling module address_parse
+
+Top level modules:
+	address_parse
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/parameters.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling package mypkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/bfaur/Desktop/Win23/ECE485R/Cache_Simulator/cache.sv {1 {vlog -work work -vopt -sv -stats=none {C:\Users\bfaur\Desktop\Win23\ECE485R\Cache_Simulator\cache.sv}
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling package cache_sv_unit
+-- Importing package mypkg
+-- Compiling module cache
+
+Top level modules:
+	cache
+
+} {} {}}
