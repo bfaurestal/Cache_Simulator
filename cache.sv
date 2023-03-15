@@ -15,6 +15,7 @@ output int cache_hit;
 output int cache_miss;
 int count = 0;
 int num = 0;
+reg [1:0] mesi_state; ////////////
 reg [1:0]eof;
 
 integer i_hit;
@@ -50,16 +51,6 @@ logic [TAG_BITS-1:0] TAG[INDEX_BITS-1:0][WAYS-1:0]; */
 /* bit [14:0] iCache[16][2];
 bit [14:0] dCache[16][2]; */
 
-bit [MESI_BITS-1:0]way_hit, way_miss, way_Lru_returned;
-bit [MESI_BITS-1:0]Lru_set_prev[WAY];
-bit [MESI_BITS-1:0]Lru_set_nxt[WAY];
-bit [MESI_BITS-1:0]Lru_set_snp_prev[WAY];
-bit [MESI_BITS-1:0]Lru_set_snp_nxt[WAY];
-bit [32-1:0]trc_addr,evct_addr;
-
-logic [INDEX_BITS-1:0]req_set; //offsetbits:0
-logic [TAG_BITS-1:0]req_tag; //tagbits
-
 /***********************************************************************************************/
 
 assign trace_address = read_address[32-1:OFFSET_BITS];
@@ -77,6 +68,10 @@ assign hit_state = STATE[req_set][hit_way];
 --valid operations and increment the counter if it exist
 --for example when there is a read the read counter get incremented 
 */
+initial
+begin
+	mesi_state = 2'b00;
+end
 
 always @(read_address or cmd)
 //initial
@@ -117,17 +112,41 @@ case(cmd)
 		
 		if(flag==1) begin
 			
-			//update MESI to invalidate at that index and way 
 			//$display("MISS");
 			cache_hit++;
 			which_way(empty_way);
-			MESI_tracker[LINE][empty_way]=3;
+			//MESI_tracker[index][empty_way]=3;
 			
 		end
 		else begin
 			cache_miss++;
 		end
-	end
+		case (mesi_state)
+				2'b00:
+				begin
+					//if (first_read == 1'b1)
+					//	state <= 2'b10;
+					//else
+					mesi_state <= 2'b01;
+					MESI_tracker[index][empty_way]=1;
+				end
+				2'b01:
+				begin
+					mesi_state <= 2'b01;
+					MESI_tracker[index][empty_way]=1;
+				end
+				2'b10:
+				begin
+					mesi_state <= 2'b01;
+					MESI_tracker[index][empty_way]=1;
+				end
+				2'b11:
+				begin
+					mesi_state <= 2'b11;	
+					MESI_tracker[index][empty_way]=3;
+				end
+			endcase		
+		end
 
 	WRITE: begin
 		cache_write++;
@@ -154,9 +173,31 @@ case(cmd)
 			
 			*/
 		end
+		case (mesi_state)
+			2'b00:
+			begin
+				mesi_state <= 2'b10;
+				MESI_tracker[index][empty_way]=2;
+			end
+			2'b01:
+			begin
+				mesi_state <= 2'b10;
+				MESI_tracker[index][empty_way]=2;
+			end
+			2'b10:
+			begin
+				mesi_state <= 2'b11;
+				MESI_tracker[index][empty_way]=3;
+			end
+			2'b11:
+			begin
+				mesi_state <= 2'b11;
+				MESI_tracker[index][empty_way]=3;
+			end
+		endcase
 		if(debug==1)
 			$display("cache_write: %d", cache_write);
-	eof = 0;
+
 	end
 	
 	//end
@@ -187,22 +228,94 @@ case(cmd)
 		$write("I_index : %d", i_index);
 		$display("I_byselect : %b", i_byte_select);
 		end
-		
+		case (mesi_state)
+			2'b00:
+			begin
+				mesi_state<= 2'b01;
+			end
+			2'b01:
+			begin
+				mesi_state<= 2'b01;
+			end
+			2'b10:
+			begin
+				mesi_state<= 2'b01;
+			end
+			2'b11:
+			begin
+				mesi_state<= 2'b11;
+			end
+		endcase
 		
 	end
 
 	L2_INVAL: begin
 		$display("L2_INVAL");
-
+		case (mesi_state)
+			2'b00:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b01:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b10:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b11:
+			begin
+				mesi_state<= 2'b00;
+			end
+		endcase
 	end
 
 	L2_DATA_RQ: begin
 		$display("L2_DATA_RQ");
+		case (mesi_state)
+			2'b00:
+			begin
+				mesi_state<= 2'b00;
+				
+			end
+			2'b01:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b10:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b11:
+			begin
+				mesi_state<= 2'b00;
+			end
+		endcase
 	end
 
 	CLR: begin
 		$display("CLR");
 		clear_cache;
+		case (mesi_state)
+			2'b00:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b01:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b10:
+			begin
+				mesi_state<= 2'b00;
+			end
+			2'b11:
+			begin
+				mesi_state<= 2'b00;
+			end
+		endcase
+
 	end
 
 	PRINT: begin
@@ -260,21 +373,6 @@ task l2_invalidate(input [32-1:0]read_address);
 	//L2_control = FALSE;
 endtask 
 
-/*
----------------->UpdateLRU<-----------------
---Function for the Least Replacement Used--
---This function check which way is available--
---Also check if all the way is full and if full evicts the LRU--
- task UpdateLRU(input index, input way);
-for(int i =0 ; i < WAY; i++) begin 
-	if(LRU[index][i] < LRU[index][way])
-		LRU[index][i]++;
-LRU[index][way] = 0;
-
-
-endtask
-*/
-
 
 /* --------------->Print Statistics<--------------- */
 final begin
@@ -300,7 +398,7 @@ task print_contents;
 				//$display(" %s  	|  %d  	|  %d |  %h  | %d");
 				$display("************ Valid lines in L1cache ************");
 				$display(" MESI |  LRU  |  TAG 	|     SET    |  WAY");
-				$display(" ys  	|  yd  	|  %d |  %h  | %d",tag,index,i);
+				$display("  %b 	|  yd  	|  %d |  %h  | %d",MESI_tracker[index][i],dCache[index][i],index,i);
 				
 		end
 	end
@@ -331,36 +429,6 @@ task UpdateLRU(input index, input way);
 	end
 endtask
 
-/****************************************** CHECK CACHE *************************************
-**Check way 0 to way 7 add current index
-*/
-/* task check_ways;
-	tag_hit = FALSE;
-	tag_miss = FALSE;
-	for(int i = 0; i < WAY; i++) begin
-	//$display(" at index %dway[%d]:%d",index,i,dCache[index][i]);
-	if(normal==1 || debug == 1)
-		$display(" at index %b way[%d]:%d",index,i,dCache[1][i]);
-		if(dCache[index][i] == tag) begin
-			tag_hit = TRUE;
-			$display (":HIT# %d",tag_hit);
-			tag_miss = FALSE; 
-			hit_way = i;
-			//$display("hit at:%d",index);
-			if(normal==1);
-				$display("hit at way[%d]:%d",i,index);
-			//if(debug) tag_hit_res =(tag_hit);
-			if(debug) way_hit=hit_way;
-		end
-	end
-	if(tag_hit == FALSE) begin
-		tag_hit = FALSE;
-		tag_miss = TRUE;
-	
-		//if(debug) tag_miss_res =(tag_miss);
-	end
-endtask */
-/***********************************************************************************************/
 
 
 /****************************************** Get The Least recently used ***************************
@@ -368,7 +436,6 @@ endtask */
 ***and return the unused way 
 ***or the least recenly used one
 ****
-
 */
 task which_way(output return_way);
 
@@ -393,32 +460,36 @@ task which_way(output return_way);
 endtask
 /***********************************************************************************************/
 
-/****************************************** Check if it's a hit or a miss *************************************
-**Check way 0 to way 7 and current index*
-**If a hit return at what way the hit occurned
-** if a miss set Flag
-*/
-task hit_or_miss(input this_index, input this_tag, output way_filled,output miss_flag);
+task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
+				reg [TAG_BITS - 1: 0]this_tag, 
+				output int way_filled,
+				output int hit_flag);
+				
+				
+		///$display("checking for tag[index:%d]=%d", this_index,this_tag);		
 	for(int way_hit = 0; way_hit< WAY; way_hit++) begin 
-	
+		//$display("in here %dth time for tag:%d[index:%d]",way_hit,this_tag,this_index);
 		if(dCache[this_index][way_hit] == this_tag) begin
 			//....... and mesi is not invalid 
 			if(debug==1)
-				$display("We've got a hit for tag %d at index:%d way_hit:%d, miss_flag:%d",tag,index,way_hit,miss_flag);
+			$display("We've got a hit for tag %d at index:%d way_hit:%d, miss_flag:%d",this_tag,this_index,way_hit,miss_flag);
 			//cache_hit++;
-			miss_flag = 1;
+			hit_flag = 1;
 			way_filled = way_hit ; 
-			break;
+			$display("this is the way %d & hit status is %d", way_filled,hit_flag);
+			
 		end 
 		else begin 
-			$display("MISS");
-			miss_flag = 0;
+			if(dCache[this_index][way_hit] ==0) begin
+			//$display("MISS");
+			hit_flag = 0;
+			dCache[this_index][way_hit] = this_tag;
+			return;
+			end
 		end
 	end
 
 
 endtask
-
-/***********************************************************************************************/
 
 endmodule
