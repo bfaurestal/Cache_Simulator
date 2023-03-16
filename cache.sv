@@ -15,7 +15,7 @@ output int cache_hit;
 output int cache_miss;
 int count = 0;
 int num = 0;
-reg [1:0] mesi_state; ////////////
+reg [1:0] mesi_state;
 reg [1:0]eof;
 
 integer i_hit;
@@ -83,31 +83,6 @@ case(cmd)
 
 	READ: begin
 		cache_read=cache_read+1;
-		/* //check_ways;
-		
-		 if(dCache[index][WAY]==0) begin // if cache is empty
-			$display("Compulstry Miss");
-			dCache[index][WAY]=tag; //write cache
-			cache_miss++; //increment counter for miss
-		end
-		//if(dCache[index][WAY]==tag) begin //if it's a hit
-		which_way(empty_way);
-		if(tag_hit) begin //if it's a hit
-			cache_hit++; //tracks number of hits 
-			if(normal==1) begin
-				$write("HIT #%d----",num);
-				$write("HIT for tag %b----",tag);
-				$display("at index %d",index);
-			end
-			tag_hit =1;
-			
-		end
-		else begin //if cache not empty or full
-			cache_miss++;
-			dCache[index][empty_way]=tag;
-			//tag_miss=1;
-		end
-		task_LRU; */
 		hit_or_miss(index, tag, empty_way, flag);
 		
 		if(flag==1) begin
@@ -124,26 +99,43 @@ case(cmd)
 		case (mesi_state)
 				2'b00:
 				begin
-					//if (first_read == 1'b1)
-					//	state <= 2'b10;
-					//else
-					mesi_state <= 2'b01;
-					MESI_tracker[index][empty_way]=1;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
 				end
 				2'b01:
 				begin
-					mesi_state <= 2'b01;
-					MESI_tracker[index][empty_way]=1;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
 				end
 				2'b10:
 				begin
-					mesi_state <= 2'b01;
-					MESI_tracker[index][empty_way]=1;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
 				end
 				2'b11:
 				begin
-					mesi_state <= 2'b11;	
-					MESI_tracker[index][empty_way]=3;
+					if (mesi_state == 2'b11)
+					begin
+						mesi_state <= 2'b11;
+						MESI_tracker[index][empty_way]=3;
+					end
+					else
+						break;
 				end
 			endcase		
 		end
@@ -176,23 +168,43 @@ case(cmd)
 		case (mesi_state)
 			2'b00:
 			begin
-				mesi_state <= 2'b10;
-				MESI_tracker[index][empty_way]=2;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b10;
+						MESI_tracker[index][empty_way]=2;
+					end
+					else
+						break;
 			end
 			2'b01:
 			begin
-				mesi_state <= 2'b10;
-				MESI_tracker[index][empty_way]=2;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b10;
+						MESI_tracker[index][empty_way]=2;
+					end
+					else
+						break;
 			end
 			2'b10:
 			begin
-				mesi_state <= 2'b11;
-				MESI_tracker[index][empty_way]=3;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b11;
+						MESI_tracker[index][empty_way]=3;
+					end
+					else
+						break;
 			end
 			2'b11:
 			begin
-				mesi_state <= 2'b11;
-				MESI_tracker[index][empty_way]=3;
+					if (mesi_state == 2'b11)
+					begin
+						mesi_state <= 2'b11;
+						MESI_tracker[index][empty_way]=3;
+					end
+					else
+						break;
 			end
 		endcase
 		if(debug==1)
@@ -231,19 +243,44 @@ case(cmd)
 		case (mesi_state)
 			2'b00:
 			begin
-				mesi_state<= 2'b01;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
 			end
 			2'b01:
 			begin
-				mesi_state<= 2'b01;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
+
 			end
 			2'b10:
 			begin
-				mesi_state<= 2'b01;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b01;
+						MESI_tracker[index][empty_way]=1;
+					end
+					else
+						break;
 			end
 			2'b11:
 			begin
-				mesi_state<= 2'b11;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b11;
+						MESI_tracker[index][empty_way]=3;
+					end
+					else
+						break;
 			end
 		endcase
 		
@@ -254,19 +291,43 @@ case(cmd)
 		case (mesi_state)
 			2'b00:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b01:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b10:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b11:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b11)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 		endcase
 	end
@@ -276,20 +337,44 @@ case(cmd)
 		case (mesi_state)
 			2'b00:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 				
 			end
 			2'b01:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b10:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b11:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b11)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 		endcase
 	end
@@ -300,19 +385,43 @@ case(cmd)
 		case (mesi_state)
 			2'b00:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b00)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=00;
+					end
+					else
+						break;
 			end
 			2'b01:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b01)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b10:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b10)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 			2'b11:
 			begin
-				mesi_state<= 2'b00;
+					if (mesi_state == 2'b11)
+					begin
+						mesi_state <= 2'b00;
+						MESI_tracker[index][empty_way]=0;
+					end
+					else
+						break;
 			end
 		endcase
 
@@ -492,4 +601,4 @@ task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
 
 endtask
 
-endmodule
+endmodule;
