@@ -17,8 +17,10 @@ int count = 0;
 int num = 0;
 reg [1:0]eof;
 reg [1:0] mesi_state;
-integer i_hit;
-integer i_miss;
+int icache_hit;
+int icache_miss;
+int icache_read;
+int icache_write;
 int tag_hit =0;
 int tag_miss =0;
 integer hit_way;
@@ -43,6 +45,9 @@ int way_4;
 real a;
 real b;
 real c;
+real i_a;
+real i_b;
+real i_c;
 /***********************************************************************************************/
 
 bit [MESI_BITS:0]LRU_Returned;
@@ -83,13 +88,15 @@ begin
 case(cmd)
 
 	READ: begin
+	    mesi;
 		cache_read=cache_read+1;
 		hit_or_miss(index, tag, flag);
 		
 		if(flag==1) begin //it's a hit 
 			
 			//update MESI to invalidate at that index and way 
-			$display("HIT for %h",tag);
+			if(debug)
+				$display("HIT for %h",tag);
 			cache_hit++;
 			//MESI_tracker[index][empty_way]=3;
 			
@@ -97,42 +104,10 @@ case(cmd)
 		else begin //it is a miss
 			cache_miss++;
 		end
-		
-		/********MESI*********/
-		case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b10;
-						//MESI_tracker[index][empty_way]=2;
-					
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b10;
-						//MESI_tracker[index][empty_way]=2;
-					
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b11;
-						//MESI_tracker[index][empty_way]=3;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b11;
-						//MESI_tracker[index][empty_way]=3;
-					
-			end
-		endcase
-		/********MESI END*********/
 	end
 
 	WRITE: begin
+		mesi;
 		cache_write++;
 		my_LRU_8= initialize_LRU_b_8(index,my_LRU_8);
 		way_8 = WhichWay8 (index,my_LRU_8);
@@ -159,59 +134,38 @@ case(cmd)
 		end
 		if(debug==1)
 			$display("cache_write: %d", cache_write);
-		/********MESI*********/
-		case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b11;
-						//MESI_tracker[index][empty_way]=3;
-					
-			end
-		endcase
+	
 	end
 
 	I_FETCH: begin
+		icache_read++;
+		mesi;
 		if(debug==1)
 			$display("Inst fetch for address: %h",read_address);
 		assign i_tag = read_address[ADDRESS_BITS - 1 : I_INDEX_BITS + OFFSET_BITS];//range for tag
 		assign i_index = read_address[(OFFSET_BITS + I_INDEX_BITS) - 1:OFFSET_BITS]; //range for index
 		assign i_byte_select = read_address[OFFSET_BITS - 1 : 0];//range for byte_select
 		
-		if(iCache[index][WAY]==i_tag) begin
-			//set MESI state to E
-			if(normal == 1 || debug ==1) begin
+		my_LRU_4= initialize_LRU_b_4(index,my_LRU_4);
+		way_4 = WhichWay4 (i_index,my_LRU_4);
+		if(iCache[i_index][way_4]==0) begin
+			i_miss++;
+			iCache[i_index][way_4] = i_tag;
+			my_LRU_4=updateLRU_b_4(i_index,way_4, my_LRU_4);
+		end
+		if(iCache[i_index][way_4]==i_tag) begin
+			if(debug ==1) begin
 				$write("HIT #%d----",num);
 				$write("HIT for tag %b----",i_tag);
 				$display("at index %b",index);
 			end
-			num++;
-			i_hit++;
+			icache_hit++;
 		end
 		else begin
+			my_LRU_4= initialize_LRU_b_4(index,my_LRU_4);
+			way_4 = WhichWay4 (i_index,my_LRU_4);
 			iCache[index][WAY]=i_tag;
+			my_LRU_4=updateLRU_b_4(i_index,way_4, my_LRU_4);
 		end
 		if (debug == 1) begin
 			$write("I_TAG_BITS:%d |",I_TAG_BITS);
@@ -221,147 +175,32 @@ case(cmd)
 			$write("I_index : %d", i_index);
 			$display("I_byselect : %b", i_byte_select);
 		end
-		case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b01;
-						//MESI_tracker[index][empty_way]=1;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b11;
-						//MESI_tracker[index][empty_way]=3;
-					
-			end
-		endcase
+		
 		
 		
 	end
 
 	L2_INVAL: begin
+		mesi;
 		if(debug==1)
 			$display("--------->L2_INVALIDATE<---------");
-		l2_invalidate(read_address);
-		case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-		endcase
+		$display("L2: Invalidate %h",read_address);
+	
 
 	end
 
 	L2_DATA_RQ: begin
+		mesi;
 		$display("L2_DATA_RQ");
-		case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-				
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-		endcase
+		
 	end
 
 	CLR: begin
+		mesi;
 		if(debug==1)
 			$display("--------->CLEARING CACHE<---------");
 		clear_cache;
-			case (mesi_state)
-			2'b00:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=00;
-					
-			end
-			2'b01:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b10:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-			2'b11:
-			begin
-					
-						mesi_state <= 2'b00;
-						//MESI_tracker[index][empty_way]=0;
-					
-			end
-		endcase
+		
 	end
 
 	PRINT: begin
@@ -373,27 +212,9 @@ case(cmd)
 	default: $display("Invalid Command");
 
 endcase
-/* 	$display(" -------From cahce----------");
-	$display("CMD: %d", cmd);
-	$display("Address %x",read_address);
-	 */
-	//$display("cache_read: %d", cache_read);
+
 end
 
-
-/* initial
-begin
-#100
-	for(int i =0; i<10; i++) begin
-		$display("array at position [%d]:at tag: %b",i,iCache[i][0]);
-	end
-	$display("iCache = %p", iCache);
-	for(int i =0; i<10; i++)begin
-		$display("---------DCACHE------------");
-		$display("array at position [%d]:at tag: %b",i,dCache[i][0]);
-	end
-	$display("dCache = %p", dCache);
-end */
 
 /*
 ---------------->Clear cache<-----------------
@@ -406,12 +227,6 @@ task clear_cache;
 	cache_hit = 0;
 	cache_miss = 0;
 	cache_write =0;	
-	for(int i = 0; i< WAY; i++) begin
-		dCache[1][i]=0;
-		//dCache[1][i]=0;
-		$display("dCache[0][%d],%d",i,dCache[1][i]);
-		$display("dCache[0][%d],%d",i,dCache[7][i]);
-	end 
 
 endtask
 
@@ -420,15 +235,13 @@ endtask
 ---------------->L2 Invalidate cache<-----------------
 --Function to display upon an invalidate command--
 */
-task l2_invalidate(input [32-1:0]read_address);
-	$display("L2:  %h","Invalidate",read_address);
-	//L2_control = FALSE;
-endtask 
+
 
 /* ---------------->Print Contents<-----------------
 --Function display the contents of the cache upon a 9 command-- */
 task print_contents;
-$display("entering print_contents");
+	if(debug)
+		$display("entering print_contents");
 		for(int i = 0; i < index; i++) begin
 			for(int i = 0; i < WAY; i++) begin
 					//$display(" %s  	|  %d  	|  %d |  %h  | %d");
@@ -479,10 +292,10 @@ task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
 			///store valid lines//
 			
 			valid_lines[index][way_8]=tag;
-			MESI_tracker[index][way_8]=mesi_state; // update mesi to shared
+			//MESI_tracker[index][way_8]=mesi_state; // update mesi to shared
 			hit_flag = 1;
-			 
-			$display(" hit status is %d",hit_flag);
+			if(debug) 
+				$display(" hit status is %d",hit_flag);
 			
 		end 
 	
@@ -497,8 +310,10 @@ task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
 					end
 				end
 				way_8 = WhichWay8 (this_index,my_LRU_8);
+				if(debug)begin
 					$display("the way selected is %d", way_8);
 					$display("the content of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
+				end
 				dCache[this_index][way_8] = this_tag;
 				if(debug) begin
 					for(int i = 0; i< WAY; i++) begin
@@ -507,7 +322,8 @@ task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
 				end
 				
 				my_LRU_8=updateLRU_b_8(this_index,way_8, my_LRU_8);
-				$display("Update of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
+				if(debug)
+					$display("Update of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
 			
 		end
 		
@@ -518,7 +334,77 @@ endtask
 
 /***********************************************************************************************/
 
+task mesi;
 
+		/********MESI*********/
+		case (cmd)
+			I:
+			begin
+			if(debug)
+				$display("entering invalid");
+				if (cmd == 0 || cmd == 2) begin 
+					mesi_state <= 2'b01; //state equal to shared
+					//MESI_tracker[index][empty_way]=2;
+				end else if( cmd == 1) begin 
+					mesi_state <= 2'b10; 
+				end 
+				else begin 
+					mesi_state <= 2'b00;
+				end
+				
+		
+			end
+			S:
+			begin
+			if(debug)
+				$display("entering Shared");
+				if (cmd == 0 || cmd == 2) begin 
+					mesi_state <= 2'b01; //state equal to shared
+					//MESI_tracker[index][empty_way]=2;
+				end else if( cmd == 1) begin 
+					mesi_state <= 2'b10; 
+				end 
+				else begin 
+					mesi_state <= 2'b00;
+				end
+				
+		
+			end
+			E:
+			begin
+				if(debug)
+					$display("entering Exclusive");
+				if (cmd == 0 || cmd == 2) begin 
+					mesi_state <= 2'b10; //state equal to Exclusive
+					//MESI_tracker[index][empty_way]=2;
+				end else if( cmd == 1) begin 
+					mesi_state <= 2'b11; 
+				end 
+				else begin 
+					mesi_state <= 2'b00;
+				end
+				
+		
+			end
+			M:
+			begin
+				if(debug)
+					$display("entering Modified");
+				if (cmd == 0 || cmd == 2 || cmd == 1) begin 
+					mesi_state <= 2'b11; //state equal to shared
+					//MESI_tracker[index][empty_way]=2;
+				end
+				else begin 
+					mesi_state <= 2'b00;
+				end
+				
+		
+			end
+		endcase
+		/********MESI END*********/
+
+
+endtask
 /*******************************************Mohammed and Ibrahim****************************************************/
 
 // Return type as 2 LRU bits for 4 ways, and 3 LRU bits for 8 ways
@@ -692,11 +578,6 @@ function uLRU_b_8 updateLRU_b_8(bit [13:0] index_8, bit [7:0] way_8, bit[2:0] LR
 endfunction
 
 
-
-
-
-
-
 /**************************************************END M&I*********************************************/
 
 
@@ -715,13 +596,17 @@ final begin
 	c = 100;
 	hit_ratio = (a/(b+a))*c;
 	$display("%d	|\t%d	|\t%d	|\t%d	|%0.3f\t",cache_read,cache_write,cache_hit,cache_miss,hit_ratio);
-	//$display("fake_read %d",fake_read);
-	for(int i = 0; i< WAY; i++) begin
-		$display("value in dCache[0][%d],%d",i,dCache[0][i]);
-		$display("dCache[1][%d],%d",i,dCache[1][i]);
-		//$display("MESI state:%d",MESI_tracker[1][i]);
-	end 
-	//$display("stack %p", LRU_tracker);
+	$display("---------------------------------------------");
+	$display("---------------------------------------------");
+	$display("*******Instruction Cache Statistics*******");
+	$display("STATISTICS:");
+	$display("CACHE READS|CACHE WRITES|CACHE HITS|CACHE MISSES|CACHE HIT_RATIO");
+	i_a = icache_hit;
+	i_b = icache_miss;
+	i_c = 100;
+	ihit_ratio = (i_a/(i_b+i_a))*i_c;
+	$display("%d	|\t%d	|\t%d	|\t%d	|%0.3f\t",icache_read,icache_write,icache_hit,icache_miss,ihit_ratio);
+	
 end
 
 endmodule

@@ -1,3 +1,5 @@
+
+
 import mypkg::*;
 
 module File_Handler;
@@ -8,7 +10,7 @@ integer data_command; //command
 string retrieved_file; //file pointer
 
 reg flag = 0;
-reg[32-1:0] read_address;
+reg [32-1:0] read_address;
 reg [OFFSET_BITS - 1 : 0]offset;
 reg [INDEX_BITS - 1 : 0]Index;
 reg [TAG_BITS - 1: 0]tagg;
@@ -81,22 +83,10 @@ else if(silent == 0 && debug ==0)
 			end
 		
 		valid_data = $fscanf(data_file, "%h", read_address);
-		if((debug == 1 || normal == 1) && data_command != 9)
+		if((debug == 1) && data_command != 9)
 			begin
 				$display("Command:%d at address %h ", data_command,read_address);
 			end
-					$display("tag : %d |", tagg);
-
-	/* 	if(debug==1)
-		begin
-			$display("---->File_Handler.sv<----");
-			$write("TAG_BITS:%d |",TAG_BITS);
-			$write("INDEX_BITS:%d |",INDEX_BITS);
-			$display("OFFSET_BITS:%d",OFFSET_BITS);
-			write("tag : %d |", tagg);
-			$write("index : %d |", Index);
-			$display("byselect : %b", offset);
-		end */
 		
 	end
 	$fclose(data_file);
