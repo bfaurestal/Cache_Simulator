@@ -16,7 +16,7 @@ output int cache_miss;
 int count = 0;
 int num = 0;
 reg [1:0]eof;
-reg [1:0] mesi_state;
+reg [1:0] mesi_state = 2'b00;
 int icache_hit;
 int icache_miss;
 int icache_read;
@@ -88,7 +88,7 @@ begin
 case(cmd)
 
 	READ: begin
-	    mesi;
+	    
 		cache_read=cache_read+1;
 		hit_or_miss(index, tag, flag);
 		
@@ -104,28 +104,26 @@ case(cmd)
 		else begin //it is a miss
 			cache_miss++;
 		end
+		mesi;
 	end
 
 	WRITE: begin
-		mesi;
+	
 		cache_write++;
 		my_LRU_8= initialize_LRU_b_8(index,my_LRU_8);
 		way_8 = WhichWay8 (index,my_LRU_8);
-		if(dCache[index][way_8]===0) begin // if cache is empty
+		
+		if(dCache[index][way_8]==tag) begin //if hit
+			cache_hit++;
+			
+			//Update MESI HERE
+		
+		end
+		if(dCache[index][way_8]==0) begin // if cache is empty
 			//$display("Compulstry Miss");
 			cache_miss++;
 			dCache[index][way_8]=tag; //write cache
-			 //increment counter for miss
-			/*
-			Update MEsi to Modified
-			*/
-		end
-		if(dCache[index][way_8]==tag) begin //if hit
-			cache_hit++;
-			/*
-			Update MESI HERE
-			*/
-		
+			//Update MEsi to Modified
 		end
 		else begin
 			dCache[index][way_8]=tag;
@@ -133,13 +131,12 @@ case(cmd)
 	
 		end
 		if(debug==1)
-			$display("cache_write: %d", cache_write);
-	
+			$display("cache_write: %d", cache_write); 
 	end
 
 	I_FETCH: begin
 		icache_read++;
-		mesi;
+		
 		if(debug==1)
 			$display("Inst fetch for address: %h",read_address);
 		assign i_tag = read_address[ADDRESS_BITS - 1 : I_INDEX_BITS + OFFSET_BITS];//range for tag
@@ -176,29 +173,29 @@ case(cmd)
 			$display("I_byselect : %b", i_byte_select);
 		end
 		
-		
+		mesi;
 		
 	end
 
 	L2_INVAL: begin
-		mesi;
+		
 		if(debug==1)
 			$display("--------->L2_INVALIDATE<---------");
 		$display("L2: Invalidate %h",read_address);
-	
+		mesi;
 
 	end
 
 	L2_DATA_RQ: begin
-		mesi;
 		$display("L2_DATA_RQ");
-		
+		mesi;
 	end
 
 	CLR: begin
 		mesi;
 		if(debug==1)
 			$display("--------->CLEARING CACHE<---------");
+		mesi;
 		clear_cache;
 		
 	end
@@ -227,6 +224,13 @@ task clear_cache;
 	cache_hit = 0;
 	cache_miss = 0;
 	cache_write =0;	
+	icache_hit=0;
+	icache_miss=0;
+	icache_read=0;
+	icache_write=0;		  
+
+	   
+
 
 endtask
 
@@ -341,15 +345,17 @@ task mesi;
 			I:
 			begin
 			if(debug)
-				$display("entering invalid");
+				$display("entering invalid %b",mesi_state);
 				if (cmd == 0 || cmd == 2) begin 
 					mesi_state <= 2'b01; //state equal to shared
-					//MESI_tracker[index][empty_way]=2;
+					MESI_tracker[index][empty_way]=1;
 				end else if( cmd == 1) begin 
 					mesi_state <= 2'b10; 
+					MESI_tracker[index][empty_way]=2;
 				end 
 				else begin 
 					mesi_state <= 2'b00;
+					MESI_tracker[index][empty_way]=0;
 				end
 				
 		
@@ -357,15 +363,18 @@ task mesi;
 			S:
 			begin
 			if(debug)
-				$display("entering Shared");
+				$display("entering Shared %b",mesi_state);
 				if (cmd == 0 || cmd == 2) begin 
 					mesi_state <= 2'b01; //state equal to shared
+					MESI_tracker[index][empty_way]=1;
 					//MESI_tracker[index][empty_way]=2;
 				end else if( cmd == 1) begin 
 					mesi_state <= 2'b10; 
+					MESI_tracker[index][empty_way]=2;
 				end 
 				else begin 
 					mesi_state <= 2'b00;
+					MESI_tracker[index][empty_way]=0;
 				end
 				
 		
@@ -373,15 +382,17 @@ task mesi;
 			E:
 			begin
 				if(debug)
-					$display("entering Exclusive");
+					$display("entering Exclusive %b",mesi_state);
 				if (cmd == 0 || cmd == 2) begin 
 					mesi_state <= 2'b10; //state equal to Exclusive
-					//MESI_tracker[index][empty_way]=2;
+					MESI_tracker[index][empty_way]=2;
 				end else if( cmd == 1) begin 
 					mesi_state <= 2'b11; 
+					MESI_tracker[index][empty_way]=3;
 				end 
 				else begin 
 					mesi_state <= 2'b00;
+					MESI_tracker[index][empty_way]=0;
 				end
 				
 		
@@ -389,13 +400,14 @@ task mesi;
 			M:
 			begin
 				if(debug)
-					$display("entering Modified");
+					$display("entering Modified %b",mesi_state);
 				if (cmd == 0 || cmd == 2 || cmd == 1) begin 
 					mesi_state <= 2'b11; //state equal to shared
-					//MESI_tracker[index][empty_way]=2;
+					MESI_tracker[index][empty_way]=3;
 				end
 				else begin 
 					mesi_state <= 2'b00;
+					MESI_tracker[index][empty_way]=0;
 				end
 				
 		
