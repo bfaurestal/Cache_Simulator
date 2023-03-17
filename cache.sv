@@ -19,7 +19,6 @@ reg [1:0]eof;
 reg [1:0] mesi_state;
 integer i_hit;
 integer i_miss;
-
 int tag_hit =0;
 int tag_miss =0;
 integer hit_way;
@@ -37,6 +36,13 @@ typedef uLRU_b_4_1 uLRU_b_4[SET][4];
 typedef bit[2:0] uLRU_b_8_1;
 typedef uLRU_b_8_1 uLRU_b_8[SET][8];
 
+uLRU_b_8 my_LRU_8;
+uLRU_b_4 my_LRU_4;
+int way_8;
+int way_4;
+real a;
+real b;
+real c;
 /***********************************************************************************************/
 
 bit [MESI_BITS:0]LRU_Returned;
@@ -62,6 +68,12 @@ initial begin
 	clear_cache; //clear cache
 end
 
+/* always @(cache_hit or cache_miss) begin
+	hit_ratio =cache_hit/(cache_hit+cache_miss);
+	hit_rate = $itor(hit_ratio);
+	$display("ratio%f",hit_rate);
+end */
+
 always @(read_address )
 //initial
 begin
@@ -72,26 +84,17 @@ case(cmd)
 
 	READ: begin
 		cache_read=cache_read+1;
-		hit_or_miss(index, tag, empty_way, flag);
+		hit_or_miss(index, tag, flag);
 		
 		if(flag==1) begin //it's a hit 
 			
 			//update MESI to invalidate at that index and way 
 			$display("HIT for %h",tag);
 			cache_hit++;
-			which_way(index,empty_way);
-			$display("this is the empty way %d",empty_way);
 			//MESI_tracker[index][empty_way]=3;
 			
 		end
 		else begin //it is a miss
-			which_way(index,empty_way);
-			//return the available way//
-			// WhichWay8(index,
-					// LRU_Returned);
-			UpdateLRU(index,empty_way);
-			dCache[index][empty_way] = tag;
-			$display("updating %d",dCache[index][empty_way]);
 			cache_miss++;
 		end
 		
@@ -131,15 +134,18 @@ case(cmd)
 
 	WRITE: begin
 		cache_write++;
-		if(dCache[index][WAY]==0) begin // if cache is empty
+		my_LRU_8= initialize_LRU_b_8(index,my_LRU_8);
+		way_8 = WhichWay8 (index,my_LRU_8);
+		if(dCache[index][way_8]===0) begin // if cache is empty
 			//$display("Compulstry Miss");
-			dCache[index][WAY]=tag; //write cache
-			cache_miss++; //increment counter for miss
+			cache_miss++;
+			dCache[index][way_8]=tag; //write cache
+			 //increment counter for miss
 			/*
 			Update MEsi to Modified
 			*/
 		end
-		if(dCache[index][WAY]==tag) begin //if hit
+		if(dCache[index][way_8]==tag) begin //if hit
 			cache_hit++;
 			/*
 			Update MESI HERE
@@ -147,12 +153,9 @@ case(cmd)
 		
 		end
 		else begin
-			dCache[index][WAY]=tag;
-			
-			/*
-				LRU here 
-			
-			*/
+			dCache[index][way_8]=tag;
+			my_LRU_8=updateLRU_b_8(index,way_8, my_LRU_8);
+	
 		end
 		if(debug==1)
 			$display("cache_write: %d", cache_write);
@@ -431,7 +434,7 @@ $display("entering print_contents");
 					//$display(" %s  	|  %d  	|  %d |  %h  | %d");
 					$display("************ Valid lines in L1cache ************");
 					$display(" MESI |  LRU  |  TAG 	|     SET    |  WAY");
-					$display("  %b 	|  yd  	|  %d |  %h  | %d",MESI_tracker[index][i],valid_lines[index][i],index,i);
+					$display("  %b 	|  %b  	|  %d |  %h  | %d",MESI_tracker[index][i],my_LRU_8[index][i],valid_lines[index][i],index,i);
 					
 			end
 		end
@@ -445,58 +448,8 @@ endtask
 **update LRU of the cache
 */
 
-task UpdateLRU(input reg[INDEX_BITS-1:0]LRU_index, 
-				input int Lru_return_way);
-
-	if(LRU_tracker[LRU_index][way]==0) begin 	//If LRU bits is MRU do nothing						
-		return;
-	end
-	else begin 
-		//curr_used = LRU_tracker[LRU_index][way];
-		for(int i = 0; i < WAY; i = i + 1) begin
-			if(LRU_tracker[LRU_index][i] < LRU_tracker[LRU_index][way]) 	begin		
-				Lru_return_way = i;    			
-				LRU_tracker[LRU_index][way]++;
-				$display("LRU_index:%d way:%d LRU_bits%d", LRU_index, way, LRU_tracker[LRU_index][way] );
-			end			
-		end	
-	end
-endtask
 
 
-/****************************************** Get The Least recently used ***************************
-**Check way 0 to way 7 and current index
-***and return the unused way 
-***or the least recenly used one
-****
-
-*/
-task which_way(input reg[INDEX_BITS-1:0]which_index , 
-			output int return_way);
-
-	for(int i = 0; i < WAY; i++) begin
-	
-		//if(MESI = I) Invalidate;
-	
-	end 
-	
-	for(int i = 0; i < WAY; i++) begin
-		//$display(" at index:%d way[%d]:%d",index,i,dCache[index][i]);
-		if(debug )
-			$display("VICTIM way id:d",return_way);
-		//$display(" at index %b way[%d]:%d",index,i,dCache[index][i]);
-		
-		if(dCache[which_index][i] == WAY - 1) begin
-			empty_way = TRUE;
-			return_way = i; 
-			$display("VICTIM way id:d",return_way);
-			//return return_way;
-		end
-		
-	end
-	$display(" returning this way %d", return_way);
-endtask
-/***********************************************************************************************/
 
 /****************************************** Check if it's a hit or a miss *************************************
 **Check way 0 to way 7 and current index*
@@ -505,36 +458,60 @@ endtask
 */
 
 task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
-				reg [TAG_BITS - 1: 0]this_tag, 
-				output int way_filled,
+				reg [TAG_BITS - 1: 0]this_tag,
 				output int hit_flag);
 				
-				
-		///$display("checking for tag[index:%d]=%d", this_index,this_tag);		
-	for(int way_hit = 0; way_hit< WAY; way_hit++) begin 
-		//$display("in here %dth time for tag:%d[index:%d]",way_hit,this_tag,this_index);
-		if(dCache[this_index][way_hit] == this_tag) begin
+		my_LRU_8= initialize_LRU_b_8(this_index,my_LRU_8);
+		way_8 = WhichWay8 (this_index,my_LRU_8);
+		
+		if(dCache[this_index][way_8] === 0) begin
+			hit_flag = 0; //cold miss
+			dCache[this_index][way_8] = this_tag;
+			my_LRU_8=updateLRU_b_8(this_index,way_8, my_LRU_8);
+			
+		end
+		
+		if(dCache[this_index][way_8] === this_tag) begin
 			//....... and mesi is not invalid 
 			if(debug==1)
-				$display("We've got a hit for tag %d at index:%d way_hit:%d, miss_flag:%d",this_tag,this_index,way_hit,miss_flag);
+				$display("We've got a hit for tag %d at index:%d way_hit:%d, miss_flag:%d",this_tag,this_index,way_8,miss_flag);
 			//cache_hit++;
 			///store valid lines//
-			valid_lines[index][way_hit]=tag;
-			MESI_tracker[index][way_hit]=mesi_state; // update mesi to shared
+			
+			valid_lines[index][way_8]=tag;
+			MESI_tracker[index][way_8]=mesi_state; // update mesi to shared
 			hit_flag = 1;
-			way_filled = way_hit ; 
-			$display("this is the way %d & hit status is %d", way_filled,hit_flag);
+			 
+			$display(" hit status is %d",hit_flag);
 			
 		end 
+	
 		else begin 
-			if(dCache[this_index][way_hit] ==0) begin
-			//$display("MISS");
-			hit_flag = 0;
-			dCache[this_index][way_hit] = this_tag;
-			return;
-			end
+
+				//$display("MISS");
+				hit_flag = 0;
+				my_LRU_8= initialize_LRU_b_8(this_index,my_LRU_8);
+				if(debug) begin
+					for(int i = 0; i< WAY; i++) begin
+						$display("content at index %0d: way:%0d of cache %h",this_index,i, dCache[this_index][i]);
+					end
+				end
+				way_8 = WhichWay8 (this_index,my_LRU_8);
+					$display("the way selected is %d", way_8);
+					$display("the content of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
+				dCache[this_index][way_8] = this_tag;
+				if(debug) begin
+					for(int i = 0; i< WAY; i++) begin
+						$display("content at index %0d: way:%0d AFTER of cache %h",this_index,i, dCache[this_index][i]);
+					end
+				end
+				
+				my_LRU_8=updateLRU_b_8(this_index,way_8, my_LRU_8);
+				$display("Update of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
+			
 		end
-	end
+		
+	//end
 
 
 endtask
@@ -596,7 +573,8 @@ function uLRU_b_8 initialize_LRU_b_8(bit [13:0] index_8, bit[2:0] LRU_b_8 [16384
 	int size;
 	int number_of_0s;
 	logic emptyflag;
-	
+	if(debug)
+		$display("--------->initialinzing<--------------");
 	// Check the number of ways are present in the our set
 	// If it was the instruction cache, we are going to have a total of 4 ways
 	// if it was the data cache, we are going to have a total number of 8 ways
@@ -661,6 +639,8 @@ function  int WhichWay8 (bit[13:0] index_8, bit[2:0] LRU_b_8 [16384] [8]);
 					way = i;
 			end
 	return way;	
+	if(debug)
+		$display("--------->returning %d<--------------",way);
 endfunction
 
 
@@ -690,18 +670,25 @@ endfunction
 // Assuming LRU (000) and MRU (111)
 function uLRU_b_8 updateLRU_b_8(bit [13:0] index_8, bit [7:0] way_8, bit[2:0] LRU_b_8 [16384][8]);
 	int i;
-	for (i = 0; i < 8; i = i+1)
+	if(debug)
+			$display("--------->before Updating %b<--------------",LRU_b_8[index_8][way_8]);
+	for (i = 0; i < WAY; i = i+1)
     	begin 
 		// If any other ways are more than selected way
 		// Decrement the other ways
         	if (LRU_b_8[index_8][way_8] < LRU_b_8[index_8][i])
-			LRU_b_8[index_8][i] = LRU_b_8[index_8][i] - 1;
+				LRU_b_8[index_8][i] = LRU_b_8[index_8][i] - 1;
     	end
 	
 	// Set as MRU (111)
+	
 	LRU_b_8[index_8][way_8] = 3'b111;
+	if(debug)
+		$display("--------->Updated LRU Bits:%b<--------------",LRU_b_8[index_8][way_8]);
 
 	return LRU_b_8;
+	if(debug)
+		$display("--------->returnning LRU Bits:%p<--------------",LRU_b_8[1][WAY]);
 endfunction
 
 
@@ -721,10 +708,13 @@ endfunction
 /* --------------->Print Statistics<--------------- */
 final begin
 	$display("*******Data Cache Statistics*******");
-	hit_ratio= cache_hit/(cache_hit+cache_miss);
 	$display("STATISTICS:");
 	$display("CACHE READS|CACHE WRITES|CACHE HITS|CACHE MISSES|CACHE HIT_RATIO");
-	$display("%d	|\t%d	|\t%d	|\t%d	|%f\t",cache_read,cache_write,cache_hit,cache_miss,hit_ratio );
+	a = cache_hit;
+	b = cache_miss;
+	c = 100;
+	hit_ratio = (a/(b+a))*c;
+	$display("%d	|\t%d	|\t%d	|\t%d	|%0.3f\t",cache_read,cache_write,cache_hit,cache_miss,hit_ratio);
 	//$display("fake_read %d",fake_read);
 	for(int i = 0; i< WAY; i++) begin
 		$display("value in dCache[0][%d],%d",i,dCache[0][i]);
