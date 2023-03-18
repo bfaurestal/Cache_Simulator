@@ -1,20 +1,22 @@
+<<<<<<< HEAD
+=======
 //this file contains parameters and data structs
 package mypkg;
 `define WAYS  8
-`define LINE 16*1024 //16k sets
-`define LINE_SIZE 64
+`define SET 16*1024 //16k sets
+`define SET_SIZE 64
 `define MESI_BITS 2
 
 parameter WAY   = `WAYS; // I_Cache
 parameter I_WAY   = `WAYS/2; //D_Cache set assiocivity
-parameter LINE = `LINE;
-parameter LINE_SIZE = `LINE_SIZE;
-parameter CAPACITY = LINE * WAY * LINE_SIZE;
+parameter SET = `SET;
+parameter SET_SIZE = `SET_SIZE;
+parameter CAPACITY = SET * WAY * SET_SIZE;
 parameter MESI_BITS = `MESI_BITS;
 parameter ADDRESS_BITS = 32;
-parameter OFFSET_BITS  = $clog2(LINE_SIZE); //offset bits
-parameter INDEX_BITS = $clog2(LINE); //index bits 
-parameter I_INDEX_BITS = $clog2(LINE); // D_Cache index bits 
+parameter OFFSET_BITS  = $clog2(SET_SIZE); //offset bits
+parameter INDEX_BITS = $clog2(SET); //index bits 
+parameter I_INDEX_BITS = $clog2(SET); // D_Cache index bits 
 parameter TAG_BITS = ADDRESS_BITS - (INDEX_BITS + OFFSET_BITS);
 parameter I_TAG_BITS = ADDRESS_BITS - (I_INDEX_BITS + OFFSET_BITS); //D_Cache tag
 
@@ -49,10 +51,15 @@ reg [I_TAG_BITS - 1: 0]i_tag;
 
 //Instruction cache structure 
 typedef struct {
- bit [TAG_BITS : 0] tag[LINE][WAY];
- reg [2 - 1: 0]protocol_bits[WAY];
- reg [WAY-2 : 0]PLRU; //subtract 2 because - 1 for array to 0 and -1 for the equation for PLRU bits
+ bit [TAG_BITS - 1: 0]TAG;
+ bit [MESI_BITS-1:0]Mesi;
+ bit  [MESI_BITS-1:0]LRU;
 } D_Cache;
+/* typedef struct {
+ bit [TAG_BITS - 1: 0]TAG;
+ bit [MESI_BITS-1:0]Mesi;
+ bit  [MESI_BITS-1:0]LRU;
+} D_Cache; */
 
 //Data cache structure
 typedef struct {
@@ -62,21 +69,26 @@ typedef struct {
  reg [I_WAY - 2 : 0]PLRU; //subtract 2 because - 1 for array to 0 and -1 for the equation for PLRU bits
 } I_Cache;
 
-bit [14:0] iCache[LINE][I_WAY];
-bit [14:0] dCache[LINE][WAY];
-bit [1:0]  LRU_tracker_4[][I_WAY - 1:0];
-bit [2:0]  LRU_tracker_8[][WAY - 1:0];
-bit [2:0]  MESI_tracker[LINE][WAY];
+/***ARRAY*////
+bit [14:0] iCache[SET][I_WAY];//instruction cache
+bit [14:0] dCache[SET][WAY]; //data cache
+bit [4:0]  LRU_tracker[4096][WAY];
+bit [1:0]  MESI_tracker[SET][WAY];
+bit [11:0] valid_lines[SET][WAY];
 
 int read = 0;
 int write = 0;
 int cacheMiss=0;
 int CacheHIT=0;
-real hit_ratio= 0;
+int i_miss;
+shortreal hit_ratio= 0.0;
+shortreal ihit_ratio= 0.0;
+real hit_rate;
 int BusOp;
 string snoop_text_rslt;
 //int address;
 //int SnoopResult;
 enum{READ=0,WRITE,I_FETCH,L2_INVAL,L2_DATA_RQ,CLR=8,PRINT=9}command; //commands
-enum{M=3,E=1,S=2,I=0}MESI_states;
+enum{M=3,E=2,S=1,I=0}MESI_states;
 endpackage
+>>>>>>> main
