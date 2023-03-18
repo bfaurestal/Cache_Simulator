@@ -344,8 +344,8 @@ task mesi;
 				if(debug)
 					$display("entering Exclusive %b",mesi_state);
 				if (cmd == 0 || cmd == 2) begin 
-					mesi_state <= 2'b10; //state equal to Exclusive
-					MESI_tracker[index][empty_way]=2;
+					mesi_state <= 2'b01; //state equal to shared
+					MESI_tracker[index][empty_way]=1;
 				end else if( cmd == 1) begin 
 					mesi_state <= 2'b11; 
 					MESI_tracker[index][empty_way]=3;
