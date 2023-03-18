@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //this file contains parameters and data structs
 package mypkg;
 `define WAYS  8
@@ -91,4 +89,3 @@ string snoop_text_rslt;
 enum{READ=0,WRITE,I_FETCH,L2_INVAL,L2_DATA_RQ,CLR=8,PRINT=9}command; //commands
 enum{M=3,E=2,S=1,I=0}MESI_states;
 endpackage
->>>>>>> main
