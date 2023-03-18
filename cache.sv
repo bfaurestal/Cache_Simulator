@@ -51,15 +51,10 @@ real i_c;
 /***********************************************************************************************/
 
 bit [MESI_BITS:0]LRU_Returned;
-
-/* logic [MESI_BITS-1:0] STATE[INDEX_BITS-1:0][WAYS-1:0];
-logic [LRU_BITS-1:0] LRU[INDEX_BITS-1:0][WAYS-1:0];	
-logic [TAG_BITS-1:0] TAG[INDEX_BITS-1:0][WAYS-1:0]; */
-//logic [MESI_BITS-1:0] iCache[LINE][I_WAY-1:0];
-
-/*for testing purposes only*/
-/* bit [14:0] iCache[16][2];
-bit [14:0] dCache[16][2]; */
+/*-------------->Clear cache at startup<--------------*/
+initial begin
+	clear_cache; //clear cache
+end 
 
 
 /*
@@ -69,21 +64,8 @@ bit [14:0] dCache[16][2]; */
 --for example when there is a read the read counter get incremented 
 */
 
-initial begin
-	clear_cache; //clear cache
-end
-
-/* always @(cache_hit or cache_miss) begin
-	hit_ratio =cache_hit/(cache_hit+cache_miss);
-	hit_rate = $itor(hit_ratio);
-	$display("ratio%f",hit_rate);
-end */
-
 always @(read_address )
-//initial
 begin
-//#0
-	//$display("Cnt: %d ", cnt);
 	
 case(cmd)
 
@@ -93,12 +75,9 @@ case(cmd)
 		hit_or_miss(index, tag, flag);
 		
 		if(flag==1) begin //it's a hit 
-			
-			//update MESI to invalidate at that index and way 
 			if(debug)
 				$display("HIT for %h",tag);
 			cache_hit++;
-			//MESI_tracker[index][empty_way]=3;
 			
 		end
 		else begin //it is a miss
@@ -132,6 +111,8 @@ case(cmd)
 		end
 		if(debug==1)
 			$display("cache_write: %d", cache_write); 
+		mesi;
+			
 	end
 
 	I_FETCH: begin
@@ -227,13 +208,8 @@ task clear_cache;
 	icache_hit=0;
 	icache_miss=0;
 	icache_read=0;
-	icache_write=0;		  
-
-	   
-
-
+	icache_write=0;
 endtask
-
 
 /*
 ---------------->L2 Invalidate cache<-----------------
@@ -258,15 +234,6 @@ task print_contents;
 		$display("********************* END **********************");
 
 endtask
-
-
-/****************************************** Update LRU  *************************************
-**Check way 0 to way 7 add current index
-**update LRU of the cache
-*/
-
-
-
 
 /****************************************** Check if it's a hit or a miss *************************************
 **Check way 0 to way 7 and current index*
@@ -330,9 +297,6 @@ task hit_or_miss(input reg[INDEX_BITS-1:0]this_index,
 					$display("Update of LRu_8 at set%d,way%d, content%b",this_index,way_8,my_LRU_8[this_index][way_8]);
 			
 		end
-		
-	//end
-
 
 endtask
 
@@ -357,8 +321,6 @@ task mesi;
 					mesi_state <= 2'b00;
 					MESI_tracker[index][empty_way]=0;
 				end
-				
-		
 			end
 			S:
 			begin
@@ -376,8 +338,6 @@ task mesi;
 					mesi_state <= 2'b00;
 					MESI_tracker[index][empty_way]=0;
 				end
-				
-		
 			end
 			E:
 			begin
@@ -421,9 +381,6 @@ endtask
 
 // Return type as 2 LRU bits for 4 ways, and 3 LRU bits for 8 ways
 // -> LRU[sets][ways]
-
-
-
 // When instruction cache is never used before, this will initialize all values to the correct LRU bits 
 
 function uLRU_b_4 initialize_LRU_b_4(bit [13:0] index_4, bit[1:0] LRU_b_4 [16384][4]);
@@ -522,11 +479,8 @@ function int WhichWay4 (bit[13:0] index_4, bit[1:0] LRU_b_4 [16384] [4]);
 			end
 	return way;
 endfunction
-	
 
-
-// returns the least recently used LRU bits for the 8-way data cache, Least recently used being 000
-
+	// returns the least recently used LRU bits for the 8-way data cache, Least recently used being 000
 function  int WhichWay8 (bit[13:0] index_8, bit[2:0] LRU_b_8 [16384] [8]);
 	int i;
 	int way;
@@ -541,12 +495,8 @@ function  int WhichWay8 (bit[13:0] index_8, bit[2:0] LRU_b_8 [16384] [8]);
 		$display("--------->returning %d<--------------",way);
 endfunction
 
-
-
 // Return type as 2 LRU bits for 4 ways, and 3 LRU bits for 8 ways
 // -> LRU[sets][ways]
-
-
 // Assuming LRU (00) and MRU (11)
 
 function uLRU_b_4 updateLRU_b_4(bit [13:0] index_4, bit [1:0] way_4, bit[1:0] LRU_b_4 [16384][4]);
@@ -588,15 +538,7 @@ function uLRU_b_8 updateLRU_b_8(bit [13:0] index_8, bit [7:0] way_8, bit[2:0] LR
 	if(debug)
 		$display("--------->returnning LRU Bits:%p<--------------",LRU_b_8[1][WAY]);
 endfunction
-
-
 /**************************************************END M&I*********************************************/
-
-
-
-
-
-/***********************************************************************************************/
 
 /* --------------->Print Statistics<--------------- */
 final begin
@@ -618,7 +560,5 @@ final begin
 	i_c = 100;
 	ihit_ratio = (i_a/(i_b+i_a))*i_c;
 	$display("%d	|\t%d	|\t%d	|\t%d	|%0.3f\t",icache_read,icache_write,icache_hit,icache_miss,ihit_ratio);
-	
 end
-
 endmodule
